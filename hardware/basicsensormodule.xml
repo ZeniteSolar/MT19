@@ -1,0 +1,1333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>/home/joaoantoniocardoso/ZeniteSolar/2019/MSC19/hardware/basicsensormodule.sch</source>
+    <date>Sat 10 Nov 2018 12:53:09 AM -02</date>
+    <tool>Eeschema 5.0.1</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>basicsensormodule.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="2" name="/CANBUS/" tstamps="/5AABFC1B/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>canbus.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="3" name="/OPAMP/" tstamps="/5AAC947C/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>analog.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="4" name="/MCU/" tstamps="/5AACA401/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>atmega328p.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="5" name="/POWER SUPPLY/" tstamps="/5AACFFEF/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>supplies.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="6" name="/CANBUS CONN/" tstamps="/5AAD16DD/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>canbus_connector.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="J102">
+      <value>SENSOR</value>
+      <footprint>TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-4-2.54_1x04_P2.54mm_Horizontal</footprint>
+      <libsource lib="basicsensormodule-rescue" part="Screw_Terminal_01x04-Connector" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE60AE4</tstamp>
+    </comp>
+    <comp ref="JP101">
+      <value>jmp</value>
+      <footprint>Jumper:SolderJumper-3_P1.3mm_Open_RoundedPad1.0x1.5mm</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="basicsensormodule-rescue" part="SolderJumper_3_Open-Jumper" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE60CC9</tstamp>
+    </comp>
+    <comp ref="D101">
+      <value>LL4148</value>
+      <footprint>Diode_SMD:D_MiniMELF_Handsoldering</footprint>
+      <datasheet>http://www.vishay.com/docs/85557/ll4148.pdf</datasheet>
+      <libsource lib="basicsensormodule-rescue" part="LL4148-Diode" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE65BF3</tstamp>
+    </comp>
+    <comp ref="C102">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="basicsensormodule-rescue" part="C_Small-Device" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE67608</tstamp>
+    </comp>
+    <comp ref="H104">
+      <value>MountingHole</value>
+      <footprint>MountingHole:MountingHole_3.2mm_M3</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="basicsensormodule-rescue" part="MountingHole-Mechanical" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE9AF15</tstamp>
+    </comp>
+    <comp ref="H103">
+      <value>MountingHole</value>
+      <footprint>MountingHole:MountingHole_3.2mm_M3</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="basicsensormodule-rescue" part="MountingHole-Mechanical" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE9BC53</tstamp>
+    </comp>
+    <comp ref="H102">
+      <value>MountingHole</value>
+      <footprint>MountingHole:MountingHole_3.2mm_M3</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="basicsensormodule-rescue" part="MountingHole-Mechanical" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE9BC79</tstamp>
+    </comp>
+    <comp ref="H101">
+      <value>MountingHole</value>
+      <footprint>MountingHole:MountingHole_3.2mm_M3</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="basicsensormodule-rescue" part="MountingHole-Mechanical" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BE9BC9F</tstamp>
+    </comp>
+    <comp ref="U201">
+      <value>MCP2551-I/SN</value>
+      <footprint>Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</footprint>
+      <libsource lib="basicsensormodule-rescue" part="MCP2561-E-SN-Interface_CAN_LIN" description=""/>
+      <sheetpath names="/CANBUS/" tstamps="/5AABFC1B/"/>
+      <tstamp>59FDAEE3</tstamp>
+    </comp>
+    <comp ref="U202">
+      <value>MCP2515-E/ST-SOIC18</value>
+      <footprint>Package_SO:SOIC-18W_7.5x11.6mm_P1.27mm</footprint>
+      <libsource lib="basicsensormodule-rescue" part="MCP2515-EST-Interface_CAN_LIN" description=""/>
+      <sheetpath names="/CANBUS/" tstamps="/5AABFC1B/"/>
+      <tstamp>59FDAF0B</tstamp>
+    </comp>
+    <comp ref="R203">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="R_Small-Device" description=""/>
+      <sheetpath names="/CANBUS/" tstamps="/5AABFC1B/"/>
+      <tstamp>59FDAF39</tstamp>
+    </comp>
+    <comp ref="R202">
+      <value>4k7</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="R_Small-Device" description=""/>
+      <sheetpath names="/CANBUS/" tstamps="/5AABFC1B/"/>
+      <tstamp>59FDAF40</tstamp>
+    </comp>
+    <comp ref="R201">
+      <value>120</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="R_Small-Device" description=""/>
+      <sheetpath names="/CANBUS/" tstamps="/5AABFC1B/"/>
+      <tstamp>59FDAF5C</tstamp>
+    </comp>
+    <comp ref="C201">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="C_Small-Device" description=""/>
+      <sheetpath names="/CANBUS/" tstamps="/5AABFC1B/"/>
+      <tstamp>5AAC0190</tstamp>
+    </comp>
+    <comp ref="D201">
+      <value>pesd1can</value>
+      <footprint>TO_SOT_Packages_SMD:SOT-23_Handsoldering</footprint>
+      <datasheet>https://assets.nexperia.com/documents/data-sheet/PESD1CAN.pdf</datasheet>
+      <libsource lib="basicsensormodule-rescue" part="D_TVS_x2_AAC-Device" description=""/>
+      <sheetpath names="/CANBUS/" tstamps="/5AABFC1B/"/>
+      <tstamp>5AAC0839</tstamp>
+    </comp>
+    <comp ref="TP203">
+      <value>TXCAN</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <libsource lib="basicsensormodule-rescue" part="TestPoint-Connector" description=""/>
+      <sheetpath names="/CANBUS/" tstamps="/5AABFC1B/"/>
+      <tstamp>5AAC2327</tstamp>
+    </comp>
+    <comp ref="TP204">
+      <value>RXCAN</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <libsource lib="basicsensormodule-rescue" part="TestPoint-Connector" description=""/>
+      <sheetpath names="/CANBUS/" tstamps="/5AABFC1B/"/>
+      <tstamp>5AAC23CC</tstamp>
+    </comp>
+    <comp ref="TP209">
+      <value>INT</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <libsource lib="basicsensormodule-rescue" part="TestPoint-Connector" description=""/>
+      <sheetpath names="/CANBUS/" tstamps="/5AABFC1B/"/>
+      <tstamp>5AAC2B03</tstamp>
+    </comp>
+    <comp ref="TP201">
+      <value>SI</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <libsource lib="basicsensormodule-rescue" part="TestPoint-Connector" description=""/>
+      <sheetpath names="/CANBUS/" tstamps="/5AABFC1B/"/>
+      <tstamp>5AAC2C42</tstamp>
+    </comp>
+    <comp ref="TP202">
+      <value>SO</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <libsource lib="basicsensormodule-rescue" part="TestPoint-Connector" description=""/>
+      <sheetpath names="/CANBUS/" tstamps="/5AABFC1B/"/>
+      <tstamp>5AAC2C8C</tstamp>
+    </comp>
+    <comp ref="TP206">
+      <value>SCK</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <libsource lib="basicsensormodule-rescue" part="TestPoint-Connector" description=""/>
+      <sheetpath names="/CANBUS/" tstamps="/5AABFC1B/"/>
+      <tstamp>5AAC2CDB</tstamp>
+    </comp>
+    <comp ref="TP205">
+      <value>SC</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <libsource lib="basicsensormodule-rescue" part="TestPoint-Connector" description=""/>
+      <sheetpath names="/CANBUS/" tstamps="/5AABFC1B/"/>
+      <tstamp>5AAC2E79</tstamp>
+    </comp>
+    <comp ref="TP208">
+      <value>CAN_L</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <libsource lib="basicsensormodule-rescue" part="TestPoint-Connector" description=""/>
+      <sheetpath names="/CANBUS/" tstamps="/5AABFC1B/"/>
+      <tstamp>5AAC8491</tstamp>
+    </comp>
+    <comp ref="TP207">
+      <value>CAN_H</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <libsource lib="basicsensormodule-rescue" part="TestPoint-Connector" description=""/>
+      <sheetpath names="/CANBUS/" tstamps="/5AABFC1B/"/>
+      <tstamp>5AAC8C25</tstamp>
+    </comp>
+    <comp ref="Y201">
+      <value>16MHz</value>
+      <footprint>Crystal:Crystal_HC49-U_Vertical</footprint>
+      <datasheet>http://www.farnell.com/datasheets/321153.pdf</datasheet>
+      <libsource lib="basicsensormodule-rescue" part="Crystal_Small-Device" description=""/>
+      <sheetpath names="/CANBUS/" tstamps="/5AABFC1B/"/>
+      <tstamp>5BE72790</tstamp>
+    </comp>
+    <comp ref="C203">
+      <value>22pF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="C_Small-Device" description=""/>
+      <sheetpath names="/CANBUS/" tstamps="/5AABFC1B/"/>
+      <tstamp>5BE72797</tstamp>
+    </comp>
+    <comp ref="C204">
+      <value>22pF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="C_Small-Device" description=""/>
+      <sheetpath names="/CANBUS/" tstamps="/5AABFC1B/"/>
+      <tstamp>5BE7279E</tstamp>
+    </comp>
+    <comp ref="C202">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="C_Small-Device" description=""/>
+      <sheetpath names="/CANBUS/" tstamps="/5AABFC1B/"/>
+      <tstamp>5BEDED38</tstamp>
+    </comp>
+    <comp ref="C205">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="C_Small-Device" description=""/>
+      <sheetpath names="/CANBUS/" tstamps="/5AABFC1B/"/>
+      <tstamp>5BEF6349</tstamp>
+    </comp>
+    <comp ref="R303">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="R_Small-Device" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5AAAFE5C</tstamp>
+    </comp>
+    <comp ref="R308">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="R_Small-Device" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5AAB0092</tstamp>
+    </comp>
+    <comp ref="R306">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="R_Small-Device" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5AAB2C10</tstamp>
+    </comp>
+    <comp ref="R307">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="R_Small-Device" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5AAB2D9F</tstamp>
+    </comp>
+    <comp ref="C303">
+      <value>100n</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="C_Small-Device" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5AAB2FEC</tstamp>
+    </comp>
+    <comp ref="C302">
+      <value>100n</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="C_Small-Device" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5AAB31B3</tstamp>
+    </comp>
+    <comp ref="TP302">
+      <value>op_a_out</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <libsource lib="basicsensormodule-rescue" part="TestPoint-Connector" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5AAB3DBB</tstamp>
+    </comp>
+    <comp ref="R301">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="R_Small-Device" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5AAB421B</tstamp>
+    </comp>
+    <comp ref="R309">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="R_Small-Device" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5AAB4362</tstamp>
+    </comp>
+    <comp ref="TP301">
+      <value>op_a_in-</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <libsource lib="basicsensormodule-rescue" part="TestPoint-Connector" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5AAB45B1</tstamp>
+    </comp>
+    <comp ref="TP307">
+      <value>op_a_in+</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <libsource lib="basicsensormodule-rescue" part="TestPoint-Connector" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5AAB4639</tstamp>
+    </comp>
+    <comp ref="R304">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="R_Small-Device" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5AAB5EF4</tstamp>
+    </comp>
+    <comp ref="TP304">
+      <value>op_b_out</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <libsource lib="basicsensormodule-rescue" part="TestPoint-Connector" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5AAB63B7</tstamp>
+    </comp>
+    <comp ref="TP305">
+      <value>op_b_in+</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <libsource lib="basicsensormodule-rescue" part="TestPoint-Connector" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5AAB6737</tstamp>
+    </comp>
+    <comp ref="TP303">
+      <value>in-</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <libsource lib="basicsensormodule-rescue" part="TestPoint-Connector" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5AAB73FF</tstamp>
+    </comp>
+    <comp ref="TP306">
+      <value>in+</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <libsource lib="basicsensormodule-rescue" part="TestPoint-Connector" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5AAB7477</tstamp>
+    </comp>
+    <comp ref="D301">
+      <value>4V7</value>
+      <footprint>Diode_SMD:D_MiniMELF_Handsoldering</footprint>
+      <libsource lib="basicsensormodule-rescue" part="D_Zener_Small-Device" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5AABF910</tstamp>
+    </comp>
+    <comp ref="R305">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="R_Small-Device" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5BE62E23</tstamp>
+    </comp>
+    <comp ref="C301">
+      <value>100n</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="C_Small-Device" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5BE62E2C</tstamp>
+    </comp>
+    <comp ref="U301">
+      <value>LM324</value>
+      <footprint>Package_SO:SOIC-14_3.9x8.7mm_P1.27mm</footprint>
+      <datasheet>http://www.ti.com/lit/ds/symlink/lm2902-n.pdf</datasheet>
+      <libsource lib="basicsensormodule-rescue" part="LM324-Amplifier_Operational" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5BE784E0</tstamp>
+    </comp>
+    <comp ref="C304">
+      <value>100n</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="C_Small-Device" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5BE7C4D7</tstamp>
+    </comp>
+    <comp ref="R302">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="R_Small-Device" description=""/>
+      <sheetpath names="/OPAMP/" tstamps="/5AAC947C/"/>
+      <tstamp>5BE77B14</tstamp>
+    </comp>
+    <comp ref="Y401">
+      <value>16MHz</value>
+      <footprint>Crystal:Crystal_HC49-U_Vertical</footprint>
+      <datasheet>http://www.farnell.com/datasheets/321153.pdf</datasheet>
+      <libsource lib="basicsensormodule-rescue" part="Crystal_Small-Device" description=""/>
+      <sheetpath names="/MCU/" tstamps="/5AACA401/"/>
+      <tstamp>59FE3A5A</tstamp>
+    </comp>
+    <comp ref="C403">
+      <value>22pF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="C_Small-Device" description=""/>
+      <sheetpath names="/MCU/" tstamps="/5AACA401/"/>
+      <tstamp>59FE3A61</tstamp>
+    </comp>
+    <comp ref="C404">
+      <value>22pF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="C_Small-Device" description=""/>
+      <sheetpath names="/MCU/" tstamps="/5AACA401/"/>
+      <tstamp>59FE3A68</tstamp>
+    </comp>
+    <comp ref="R401">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="R_Small-Device" description=""/>
+      <sheetpath names="/MCU/" tstamps="/5AACA401/"/>
+      <tstamp>59FE4B17</tstamp>
+    </comp>
+    <comp ref="C406">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="C_Small-Device" description=""/>
+      <sheetpath names="/MCU/" tstamps="/5AACA401/"/>
+      <tstamp>59FE4EE2</tstamp>
+    </comp>
+    <comp ref="D402">
+      <value>LED_RED</value>
+      <footprint>LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="LED_Small_ALT-Device" description=""/>
+      <sheetpath names="/MCU/" tstamps="/5AACA401/"/>
+      <tstamp>59FE5354</tstamp>
+    </comp>
+    <comp ref="R404">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="R_Small-Device" description=""/>
+      <sheetpath names="/MCU/" tstamps="/5AACA401/"/>
+      <tstamp>59FFC489</tstamp>
+    </comp>
+    <comp ref="U401">
+      <value>ATMEGA328P-PU</value>
+      <footprint>Package_DIP:DIP-28_W7.62mm_Socket</footprint>
+      <libsource lib="basicsensormodule-rescue" part="ATmega328P-PU-MCU_Microchip_ATmega" description=""/>
+      <sheetpath names="/MCU/" tstamps="/5AACA401/"/>
+      <tstamp>59FE3414</tstamp>
+    </comp>
+    <comp ref="R402">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="R_Small-Device" description=""/>
+      <sheetpath names="/MCU/" tstamps="/5AACA401/"/>
+      <tstamp>5AACAE36</tstamp>
+    </comp>
+    <comp ref="R403">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="R_Small-Device" description=""/>
+      <sheetpath names="/MCU/" tstamps="/5AACA401/"/>
+      <tstamp>5AACB0BA</tstamp>
+    </comp>
+    <comp ref="D403">
+      <value>LED_RED</value>
+      <footprint>LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="LED_Small_ALT-Device" description=""/>
+      <sheetpath names="/MCU/" tstamps="/5AACA401/"/>
+      <tstamp>5BE7DD75</tstamp>
+    </comp>
+    <comp ref="R405">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="R_Small-Device" description=""/>
+      <sheetpath names="/MCU/" tstamps="/5AACA401/"/>
+      <tstamp>5BE7DD7B</tstamp>
+    </comp>
+    <comp ref="D401">
+      <value>LL4148</value>
+      <footprint>Diode_SMD:D_MiniMELF_Handsoldering</footprint>
+      <datasheet>http://www.vishay.com/docs/85557/ll4148.pdf</datasheet>
+      <libsource lib="basicsensormodule-rescue" part="LL4148-Diode" description=""/>
+      <sheetpath names="/MCU/" tstamps="/5AACA401/"/>
+      <tstamp>5BE95CC8</tstamp>
+    </comp>
+    <comp ref="J401">
+      <value>USART</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical</footprint>
+      <datasheet>~</datasheet>
+      <libsource lib="basicsensormodule-rescue" part="Conn_01x04-Connector_Generic" description=""/>
+      <sheetpath names="/MCU/" tstamps="/5AACA401/"/>
+      <tstamp>5BECD3FE</tstamp>
+    </comp>
+    <comp ref="C405">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="C_Small-Device" description=""/>
+      <sheetpath names="/MCU/" tstamps="/5AACA401/"/>
+      <tstamp>5BED8033</tstamp>
+    </comp>
+    <comp ref="C402">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="C_Small-Device" description=""/>
+      <sheetpath names="/MCU/" tstamps="/5AACA401/"/>
+      <tstamp>5BF3B4C1</tstamp>
+    </comp>
+    <comp ref="C401">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="C_Small-Device" description=""/>
+      <sheetpath names="/MCU/" tstamps="/5AACA401/"/>
+      <tstamp>5BF2780D</tstamp>
+    </comp>
+    <comp ref="U501">
+      <value>LM7805</value>
+      <footprint>Package_TO_SOT_THT:TO-220-3_Horizontal_TabDown</footprint>
+      <datasheet>https://www.sparkfun.com/datasheets/Components/LM7805.pdf</datasheet>
+      <libsource lib="basicsensormodule-rescue" part="LM7805_TO220-Regulator_Linear" description=""/>
+      <sheetpath names="/POWER SUPPLY/" tstamps="/5AACFFEF/"/>
+      <tstamp>5A007B62</tstamp>
+    </comp>
+    <comp ref="C501">
+      <value>1uF</value>
+      <footprint>Capacitor_Tantalum_SMD:CP_EIA-2012-12_Kemet-R_Pad1.30x1.05mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="CP1_Small-Device" description=""/>
+      <sheetpath names="/POWER SUPPLY/" tstamps="/5AACFFEF/"/>
+      <tstamp>5A008895</tstamp>
+    </comp>
+    <comp ref="C502">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="C_Small-Device" description=""/>
+      <sheetpath names="/POWER SUPPLY/" tstamps="/5AACFFEF/"/>
+      <tstamp>5A00899A</tstamp>
+    </comp>
+    <comp ref="D501">
+      <value>LL4148</value>
+      <footprint>Diode_SMD:D_MiniMELF_Handsoldering</footprint>
+      <datasheet>https://www.vishay.com/docs/85557/ll4148.pdf</datasheet>
+      <libsource lib="basicsensormodule-rescue" part="LL4148-Diode" description=""/>
+      <sheetpath names="/POWER SUPPLY/" tstamps="/5AACFFEF/"/>
+      <tstamp>5A009BD5</tstamp>
+    </comp>
+    <comp ref="C503">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="C_Small-Device" description=""/>
+      <sheetpath names="/POWER SUPPLY/" tstamps="/5AACFFEF/"/>
+      <tstamp>5A00B18A</tstamp>
+    </comp>
+    <comp ref="C504">
+      <value>1uF</value>
+      <footprint>Capacitor_Tantalum_SMD:CP_EIA-2012-12_Kemet-R_Pad1.30x1.05mm_HandSolder</footprint>
+      <libsource lib="basicsensormodule-rescue" part="CP1_Small-Device" description=""/>
+      <sheetpath names="/POWER SUPPLY/" tstamps="/5AACFFEF/"/>
+      <tstamp>5AAD0D5C</tstamp>
+    </comp>
+    <comp ref="F501">
+      <value>500mA</value>
+      <footprint>Fuse:Fuse_1206_3216Metric_Pad1.42x1.75mm_HandSolder</footprint>
+      <datasheet>https://www.mouser.com/datasheet/2/643/0ZCJ_Nov2016-1132002.pdf</datasheet>
+      <libsource lib="basicsensormodule-rescue" part="Fuse_Small-Device" description=""/>
+      <sheetpath names="/POWER SUPPLY/" tstamps="/5AACFFEF/"/>
+      <tstamp>5AB12173</tstamp>
+    </comp>
+    <comp ref="J602">
+      <value>RJ45</value>
+      <footprint>KicadZeniteSolarLibrary18:RJ45_YH59_01</footprint>
+      <libsource lib="basicsensormodule-rescue" part="RJ45_Shielded-Connector" description=""/>
+      <sheetpath names="/CANBUS CONN/" tstamps="/5AAD16DD/"/>
+      <tstamp>5A01AFBA</tstamp>
+    </comp>
+    <comp ref="J601">
+      <value>RJ45</value>
+      <footprint>KicadZeniteSolarLibrary18:RJ45_YH59_01</footprint>
+      <libsource lib="basicsensormodule-rescue" part="RJ45_Shielded-Connector" description=""/>
+      <sheetpath names="/CANBUS CONN/" tstamps="/5AAD16DD/"/>
+      <tstamp>5BE6C2F7</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="basicsensormodule-rescue" part="ATmega328P-PU-MCU_Microchip_ATmega">
+      <footprints>
+        <fp>DIP*W7.62mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">ATmega328P-PU-MCU_Microchip_ATmega</field>
+        <field name="Footprint">Package_DIP:DIP-28_W7.62mm</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~RESET~/PC6" type="3state"/>
+        <pin num="2" name="PD0" type="3state"/>
+        <pin num="3" name="PD1" type="3state"/>
+        <pin num="4" name="PD2" type="3state"/>
+        <pin num="5" name="PD3" type="3state"/>
+        <pin num="6" name="PD4" type="3state"/>
+        <pin num="7" name="VCC" type="power_in"/>
+        <pin num="8" name="GND" type="power_in"/>
+        <pin num="9" name="XTAL1/PB6" type="3state"/>
+        <pin num="10" name="XTAL2/PB7" type="3state"/>
+        <pin num="11" name="PD5" type="3state"/>
+        <pin num="12" name="PD6" type="3state"/>
+        <pin num="13" name="PD7" type="3state"/>
+        <pin num="14" name="PB0" type="3state"/>
+        <pin num="15" name="PB1" type="3state"/>
+        <pin num="16" name="PB2" type="3state"/>
+        <pin num="17" name="PB3" type="3state"/>
+        <pin num="18" name="PB4" type="3state"/>
+        <pin num="19" name="PB5" type="3state"/>
+        <pin num="20" name="AVCC" type="power_in"/>
+        <pin num="21" name="AREF" type="passive"/>
+        <pin num="22" name="GND" type="passive"/>
+        <pin num="23" name="PC0" type="3state"/>
+        <pin num="24" name="PC1" type="3state"/>
+        <pin num="25" name="PC2" type="3state"/>
+        <pin num="26" name="PC3" type="3state"/>
+        <pin num="27" name="PC4" type="3state"/>
+        <pin num="28" name="PC5" type="3state"/>
+      </pins>
+    </libpart>
+    <libpart lib="basicsensormodule-rescue" part="CP1_Small-Device">
+      <footprints>
+        <fp>CP_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">CP1_Small-Device</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="basicsensormodule-rescue" part="C_Small-Device">
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_Small-Device</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="basicsensormodule-rescue" part="Conn_01x04-Connector_Generic">
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x04-Connector_Generic</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="basicsensormodule-rescue" part="Crystal_Small-Device">
+      <footprints>
+        <fp>Crystal*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Y</field>
+        <field name="Value">Crystal_Small-Device</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="basicsensormodule-rescue" part="D_TVS_x2_AAC-Device">
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">D_TVS_x2_AAC-Device</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A1" type="passive"/>
+        <pin num="2" name="A2" type="passive"/>
+        <pin num="3" name="common" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="basicsensormodule-rescue" part="D_Zener_Small-Device">
+      <footprints>
+        <fp>TO-???*</fp>
+        <fp>*_Diode_*</fp>
+        <fp>*SingleDiode*</fp>
+        <fp>D_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">D_Zener_Small-Device</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="basicsensormodule-rescue" part="Fuse_Small-Device">
+      <footprints>
+        <fp>SM*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">F</field>
+        <field name="Value">Fuse_Small-Device</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="basicsensormodule-rescue" part="LED_Small_ALT-Device">
+      <footprints>
+        <fp>LED*</fp>
+        <fp>LED_SMD:*</fp>
+        <fp>LED_THT:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LED_Small_ALT-Device</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="basicsensormodule-rescue" part="LL4148-Diode">
+      <footprints>
+        <fp>D*MiniMELF*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LL4148-Diode</field>
+        <field name="Footprint">Diode_SMD:D_MiniMELF</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="basicsensormodule-rescue" part="LM324-Amplifier_Operational">
+      <footprints>
+        <fp>SOIC*3.9x8.7mm*P1.27mm*</fp>
+        <fp>DIP*W7.62mm*</fp>
+        <fp>TSSOP*4.4x5mm*P0.65mm*</fp>
+        <fp>SSOP*5.3x6.2mm*P0.65mm*</fp>
+        <fp>MSOP*3x3mm*P0.5mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">LM324-Amplifier_Operational</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="output"/>
+        <pin num="2" name="-" type="input"/>
+        <pin num="3" name="+" type="input"/>
+        <pin num="4" name="V+" type="power_in"/>
+        <pin num="5" name="+" type="input"/>
+        <pin num="6" name="-" type="input"/>
+        <pin num="7" name="~" type="output"/>
+        <pin num="8" name="~" type="output"/>
+        <pin num="9" name="-" type="input"/>
+        <pin num="10" name="+" type="input"/>
+        <pin num="11" name="V-" type="power_in"/>
+        <pin num="12" name="+" type="input"/>
+        <pin num="13" name="-" type="input"/>
+        <pin num="14" name="~" type="output"/>
+      </pins>
+    </libpart>
+    <libpart lib="basicsensormodule-rescue" part="LM7805_TO220-Regulator_Linear">
+      <footprints>
+        <fp>TO?220*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">LM7805_TO220-Regulator_Linear</field>
+        <field name="Footprint">Package_TO_SOT_THT:TO-220-3_Vertical</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VI" type="power_in"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="VO" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="basicsensormodule-rescue" part="MCP2515-EST-Interface_CAN_LIN">
+      <footprints>
+        <fp>TSSOP*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MCP2515-EST-Interface_CAN_LIN</field>
+        <field name="Footprint">Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm</field>
+      </fields>
+      <pins>
+        <pin num="1" name="TXCAN" type="output"/>
+        <pin num="2" name="RXCAN" type="input"/>
+        <pin num="3" name="CLKOUT/SOF" type="output"/>
+        <pin num="4" name="~TX0RTS" type="input"/>
+        <pin num="5" name="~TX1RTS" type="input"/>
+        <pin num="6" name="NC" type="NotConnected"/>
+        <pin num="7" name="~TX2RTS" type="input"/>
+        <pin num="8" name="OSC2" type="output"/>
+        <pin num="9" name="OSC1" type="input"/>
+        <pin num="10" name="VSS" type="power_in"/>
+        <pin num="11" name="~RX1BF" type="output"/>
+        <pin num="12" name="~RX0BF" type="output"/>
+        <pin num="13" name="~INT" type="output"/>
+        <pin num="14" name="SCK" type="input"/>
+        <pin num="15" name="NC" type="NotConnected"/>
+        <pin num="16" name="SI" type="input"/>
+        <pin num="17" name="SO" type="output"/>
+        <pin num="18" name="~CS" type="input"/>
+        <pin num="19" name="~RESET" type="input"/>
+        <pin num="20" name="VDD" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="basicsensormodule-rescue" part="MCP2561-E-SN-Interface_CAN_LIN">
+      <footprints>
+        <fp>SOIC*P1.27mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MCP2561-E-SN-Interface_CAN_LIN</field>
+        <field name="Footprint">Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</field>
+      </fields>
+      <pins>
+        <pin num="1" name="TXD" type="input"/>
+        <pin num="2" name="VSS" type="power_in"/>
+        <pin num="3" name="VDD" type="power_in"/>
+        <pin num="4" name="RXD" type="output"/>
+        <pin num="5" name="SPLIT" type="passive"/>
+        <pin num="6" name="CANL" type="BiDi"/>
+        <pin num="7" name="CANH" type="BiDi"/>
+        <pin num="8" name="STBY" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="basicsensormodule-rescue" part="MountingHole-Mechanical">
+      <footprints>
+        <fp>MountingHole*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">H</field>
+        <field name="Value">MountingHole-Mechanical</field>
+      </fields>
+    </libpart>
+    <libpart lib="basicsensormodule-rescue" part="RJ45_Shielded-Connector">
+      <footprints>
+        <fp>8P8C*</fp>
+        <fp>RJ31*</fp>
+        <fp>RJ32*</fp>
+        <fp>RJ33*</fp>
+        <fp>RJ34*</fp>
+        <fp>RJ35*</fp>
+        <fp>RJ41*</fp>
+        <fp>RJ45*</fp>
+        <fp>RJ49*</fp>
+        <fp>RJ61*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">RJ45_Shielded-Connector</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+        <pin num="3" name="~" type="passive"/>
+        <pin num="4" name="~" type="passive"/>
+        <pin num="5" name="~" type="passive"/>
+        <pin num="6" name="~" type="passive"/>
+        <pin num="7" name="~" type="passive"/>
+        <pin num="8" name="~" type="passive"/>
+        <pin num="SH" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="basicsensormodule-rescue" part="R_Small-Device">
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_Small-Device</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="basicsensormodule-rescue" part="Screw_Terminal_01x04-Connector">
+      <footprints>
+        <fp>TerminalBlock*:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Screw_Terminal_01x04-Connector</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="basicsensormodule-rescue" part="SolderJumper_3_Open-Jumper">
+      <footprints>
+        <fp>SolderJumper*Open*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">JP</field>
+        <field name="Value">SolderJumper_3_Open-Jumper</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A" type="passive"/>
+        <pin num="2" name="C" type="input"/>
+        <pin num="3" name="B" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="basicsensormodule-rescue" part="TestPoint-Connector">
+      <footprints>
+        <fp>Pin*</fp>
+        <fp>Test*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">TestPoint-Connector</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="basicsensormodule-rescue">
+      <uri>/home/joaoantoniocardoso/ZeniteSolar/2019/MSC19/hardware/basicsensormodule-rescue.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="/OPAMP/in1-">
+      <node ref="R302" pin="2"/>
+      <node ref="J102" pin="2"/>
+    </net>
+    <net code="2" name="/OPAMP/in1+">
+      <node ref="R308" pin="2"/>
+      <node ref="R304" pin="1"/>
+      <node ref="J102" pin="3"/>
+      <node ref="TP306" pin="1"/>
+    </net>
+    <net code="3" name="/POWER SUPPLY/+18V_OUT">
+      <node ref="F501" pin="2"/>
+      <node ref="U501" pin="1"/>
+      <node ref="C501" pin="1"/>
+      <node ref="JP101" pin="3"/>
+      <node ref="C502" pin="1"/>
+    </net>
+    <net code="4" name="Net-(D101-Pad1)">
+      <node ref="D101" pin="1"/>
+      <node ref="JP101" pin="1"/>
+    </net>
+    <net code="5" name="Net-(C102-Pad1)">
+      <node ref="C102" pin="1"/>
+      <node ref="JP101" pin="2"/>
+      <node ref="J102" pin="4"/>
+    </net>
+    <net code="6" name="/POWER SUPPLY/+18V_IN">
+      <node ref="J602" pin="4"/>
+      <node ref="J601" pin="4"/>
+      <node ref="J601" pin="5"/>
+      <node ref="J602" pin="5"/>
+      <node ref="D501" pin="2"/>
+    </net>
+    <net code="7" name="/MCU/analog1">
+      <node ref="TP304" pin="1"/>
+      <node ref="U401" pin="23"/>
+      <node ref="D301" pin="1"/>
+      <node ref="U301" pin="6"/>
+      <node ref="U301" pin="7"/>
+      <node ref="C302" pin="2"/>
+    </net>
+    <net code="8" name="GND">
+      <node ref="C301" pin="2"/>
+      <node ref="D201" pin="3"/>
+      <node ref="C201" pin="2"/>
+      <node ref="J401" pin="1"/>
+      <node ref="D403" pin="1"/>
+      <node ref="C402" pin="1"/>
+      <node ref="C401" pin="2"/>
+      <node ref="U301" pin="11"/>
+      <node ref="D301" pin="2"/>
+      <node ref="R309" pin="1"/>
+      <node ref="C303" pin="2"/>
+      <node ref="C304" pin="2"/>
+      <node ref="J601" pin="3"/>
+      <node ref="J601" pin="6"/>
+      <node ref="J601" pin="7"/>
+      <node ref="J601" pin="8"/>
+      <node ref="J601" pin="SH"/>
+      <node ref="J602" pin="6"/>
+      <node ref="J602" pin="7"/>
+      <node ref="J602" pin="8"/>
+      <node ref="J602" pin="SH"/>
+      <node ref="J602" pin="3"/>
+      <node ref="D402" pin="1"/>
+      <node ref="U401" pin="8"/>
+      <node ref="C406" pin="1"/>
+      <node ref="C404" pin="2"/>
+      <node ref="C403" pin="2"/>
+      <node ref="U401" pin="22"/>
+      <node ref="C502" pin="2"/>
+      <node ref="C504" pin="2"/>
+      <node ref="C503" pin="2"/>
+      <node ref="C501" pin="2"/>
+      <node ref="U501" pin="2"/>
+      <node ref="C202" pin="2"/>
+      <node ref="R202" pin="2"/>
+      <node ref="U201" pin="2"/>
+      <node ref="U202" pin="10"/>
+      <node ref="C204" pin="2"/>
+      <node ref="C203" pin="2"/>
+      <node ref="C205" pin="2"/>
+      <node ref="J102" pin="1"/>
+      <node ref="C102" pin="2"/>
+    </net>
+    <net code="9" name="+5V">
+      <node ref="U401" pin="7"/>
+      <node ref="R401" pin="1"/>
+      <node ref="C202" pin="1"/>
+      <node ref="C205" pin="1"/>
+      <node ref="D401" pin="1"/>
+      <node ref="C401" pin="1"/>
+      <node ref="C402" pin="2"/>
+      <node ref="U401" pin="20"/>
+      <node ref="U401" pin="21"/>
+      <node ref="C304" pin="1"/>
+      <node ref="U301" pin="4"/>
+      <node ref="U201" pin="3"/>
+      <node ref="C201" pin="1"/>
+      <node ref="D101" pin="2"/>
+      <node ref="U501" pin="3"/>
+      <node ref="U202" pin="20"/>
+      <node ref="C503" pin="1"/>
+      <node ref="C504" pin="1"/>
+      <node ref="R203" pin="1"/>
+    </net>
+    <net code="10" name="/CANBUS CONN/CAN_H">
+      <node ref="J602" pin="1"/>
+      <node ref="TP207" pin="1"/>
+      <node ref="U201" pin="7"/>
+      <node ref="D201" pin="1"/>
+      <node ref="R201" pin="2"/>
+      <node ref="J601" pin="1"/>
+    </net>
+    <net code="11" name="/CANBUS/INT">
+      <node ref="TP209" pin="1"/>
+      <node ref="U202" pin="13"/>
+      <node ref="U401" pin="15"/>
+    </net>
+    <net code="12" name="/CANBUS/CS">
+      <node ref="U202" pin="18"/>
+      <node ref="U401" pin="14"/>
+      <node ref="TP205" pin="1"/>
+    </net>
+    <net code="13" name="/CANBUS CONN/CAN_L">
+      <node ref="J601" pin="2"/>
+      <node ref="J602" pin="2"/>
+      <node ref="TP208" pin="1"/>
+      <node ref="U201" pin="6"/>
+      <node ref="R201" pin="1"/>
+      <node ref="D201" pin="2"/>
+    </net>
+    <net code="14" name="/SCK">
+      <node ref="U401" pin="19"/>
+      <node ref="U202" pin="14"/>
+      <node ref="TP206" pin="1"/>
+    </net>
+    <net code="15" name="/MOSI">
+      <node ref="U202" pin="16"/>
+      <node ref="TP201" pin="1"/>
+      <node ref="U401" pin="17"/>
+    </net>
+    <net code="16" name="/MISO">
+      <node ref="U401" pin="18"/>
+      <node ref="U202" pin="17"/>
+      <node ref="TP202" pin="1"/>
+    </net>
+    <net code="17" name="Net-(U201-Pad5)">
+      <node ref="U201" pin="5"/>
+    </net>
+    <net code="18" name="Net-(C203-Pad1)">
+      <node ref="U202" pin="8"/>
+      <node ref="Y201" pin="1"/>
+      <node ref="C203" pin="1"/>
+    </net>
+    <net code="19" name="Net-(C204-Pad1)">
+      <node ref="C204" pin="1"/>
+      <node ref="U202" pin="9"/>
+      <node ref="Y201" pin="2"/>
+    </net>
+    <net code="20" name="Net-(U202-Pad12)">
+      <node ref="U202" pin="12"/>
+    </net>
+    <net code="21" name="Net-(R203-Pad2)">
+      <node ref="R203" pin="2"/>
+      <node ref="U202" pin="19"/>
+    </net>
+    <net code="22" name="/CANBUS/RXCAN">
+      <node ref="TP204" pin="1"/>
+      <node ref="U202" pin="2"/>
+      <node ref="U201" pin="4"/>
+    </net>
+    <net code="23" name="/CANBUS/TXCAN">
+      <node ref="TP203" pin="1"/>
+      <node ref="U201" pin="1"/>
+      <node ref="U202" pin="1"/>
+    </net>
+    <net code="24" name="Net-(U202-Pad4)">
+      <node ref="U202" pin="4"/>
+    </net>
+    <net code="25" name="Net-(U202-Pad11)">
+      <node ref="U202" pin="11"/>
+    </net>
+    <net code="26" name="Net-(U202-Pad5)">
+      <node ref="U202" pin="5"/>
+    </net>
+    <net code="27" name="Net-(U202-Pad7)">
+      <node ref="U202" pin="7"/>
+    </net>
+    <net code="28" name="Net-(U202-Pad3)">
+      <node ref="U202" pin="3"/>
+    </net>
+    <net code="29" name="Net-(U202-Pad6)">
+      <node ref="U202" pin="6"/>
+    </net>
+    <net code="30" name="Net-(R202-Pad1)">
+      <node ref="R202" pin="1"/>
+      <node ref="U201" pin="8"/>
+    </net>
+    <net code="31" name="Net-(U202-Pad15)">
+      <node ref="U202" pin="15"/>
+    </net>
+    <net code="32" name="Net-(C301-Pad1)">
+      <node ref="R305" pin="1"/>
+      <node ref="R306" pin="2"/>
+      <node ref="C301" pin="1"/>
+    </net>
+    <net code="33" name="Net-(C303-Pad1)">
+      <node ref="U301" pin="5"/>
+      <node ref="R307" pin="1"/>
+      <node ref="C303" pin="1"/>
+      <node ref="TP305" pin="1"/>
+    </net>
+    <net code="34" name="Net-(C302-Pad1)">
+      <node ref="C302" pin="1"/>
+      <node ref="R307" pin="2"/>
+      <node ref="R306" pin="1"/>
+    </net>
+    <net code="35" name="Net-(R301-Pad1)">
+      <node ref="R301" pin="1"/>
+      <node ref="TP302" pin="1"/>
+      <node ref="R305" pin="2"/>
+      <node ref="U301" pin="8"/>
+    </net>
+    <net code="36" name="Net-(R308-Pad1)">
+      <node ref="U301" pin="10"/>
+      <node ref="TP307" pin="1"/>
+      <node ref="R308" pin="1"/>
+      <node ref="R309" pin="2"/>
+    </net>
+    <net code="37" name="Net-(R302-Pad1)">
+      <node ref="R303" pin="2"/>
+      <node ref="R302" pin="1"/>
+      <node ref="R304" pin="2"/>
+      <node ref="TP303" pin="1"/>
+    </net>
+    <net code="38" name="Net-(R301-Pad2)">
+      <node ref="U301" pin="9"/>
+      <node ref="R301" pin="2"/>
+      <node ref="R303" pin="1"/>
+      <node ref="TP301" pin="1"/>
+    </net>
+    <net code="39" name="Net-(U401-Pad13)">
+      <node ref="U401" pin="13"/>
+    </net>
+    <net code="40" name="Net-(J401-Pad2)">
+      <node ref="R403" pin="2"/>
+      <node ref="J401" pin="2"/>
+    </net>
+    <net code="41" name="Net-(J401-Pad3)">
+      <node ref="R402" pin="2"/>
+      <node ref="J401" pin="3"/>
+    </net>
+    <net code="42" name="Net-(D403-Pad2)">
+      <node ref="D403" pin="2"/>
+      <node ref="R405" pin="2"/>
+    </net>
+    <net code="43" name="/MCU/LED1">
+      <node ref="R405" pin="1"/>
+      <node ref="U401" pin="11"/>
+    </net>
+    <net code="44" name="Net-(U401-Pad16)">
+      <node ref="U401" pin="16"/>
+    </net>
+    <net code="45" name="Net-(C405-Pad2)">
+      <node ref="C405" pin="2"/>
+      <node ref="J401" pin="4"/>
+    </net>
+    <net code="46" name="Net-(C403-Pad1)">
+      <node ref="C403" pin="1"/>
+      <node ref="Y401" pin="1"/>
+      <node ref="U401" pin="10"/>
+    </net>
+    <net code="47" name="/MCU/USART_RX">
+      <node ref="R402" pin="1"/>
+      <node ref="U401" pin="2"/>
+    </net>
+    <net code="48" name="Net-(U401-Pad24)">
+      <node ref="U401" pin="24"/>
+    </net>
+    <net code="49" name="Net-(U401-Pad25)">
+      <node ref="U401" pin="25"/>
+    </net>
+    <net code="50" name="Net-(U401-Pad26)">
+      <node ref="U401" pin="26"/>
+    </net>
+    <net code="51" name="Net-(U401-Pad27)">
+      <node ref="U401" pin="27"/>
+    </net>
+    <net code="52" name="Net-(U401-Pad28)">
+      <node ref="U401" pin="28"/>
+    </net>
+    <net code="53" name="/MCU/USART_TX">
+      <node ref="R403" pin="1"/>
+      <node ref="U401" pin="3"/>
+    </net>
+    <net code="54" name="Net-(U401-Pad4)">
+      <node ref="U401" pin="4"/>
+    </net>
+    <net code="55" name="Net-(U401-Pad5)">
+      <node ref="U401" pin="5"/>
+    </net>
+    <net code="56" name="Net-(U401-Pad6)">
+      <node ref="U401" pin="6"/>
+    </net>
+    <net code="57" name="Net-(D402-Pad2)">
+      <node ref="D402" pin="2"/>
+      <node ref="R404" pin="2"/>
+    </net>
+    <net code="58" name="/MCU/LED2">
+      <node ref="U401" pin="12"/>
+      <node ref="R404" pin="1"/>
+    </net>
+    <net code="59" name="/MCU/RESET">
+      <node ref="C405" pin="1"/>
+      <node ref="U401" pin="1"/>
+      <node ref="C406" pin="2"/>
+      <node ref="R401" pin="2"/>
+      <node ref="D401" pin="2"/>
+    </net>
+    <net code="60" name="Net-(C404-Pad1)">
+      <node ref="U401" pin="9"/>
+      <node ref="Y401" pin="2"/>
+      <node ref="C404" pin="1"/>
+    </net>
+    <net code="61" name="Net-(D501-Pad1)">
+      <node ref="F501" pin="1"/>
+      <node ref="D501" pin="1"/>
+    </net>
+  </nets>
+</export>
