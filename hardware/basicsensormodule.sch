@@ -1,10 +1,10 @@
 EESchema Schematic File Version 4
 LIBS:basicsensormodule-cache
-EELAYER 26 0
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 5
+Sheet 1 6
 Title ""
 Date ""
 Rev ""
@@ -43,6 +43,7 @@ F7 "SPI_SCK" O R 5500 4100 50
 F8 "MCP_SS" O R 5500 4400 50 
 F9 "SCL" I L 4350 4350 50 
 F10 "SDA" I L 4350 4475 50 
+F11 "VOUT" I R 5500 4600 50 
 $EndSheet
 $Sheet
 S 7750 2950 1050 500 
@@ -133,45 +134,45 @@ $EndComp
 $Comp
 L basicsensormodule-rescue:MountingHole-Mechanical H104
 U 1 1 5BE9AF15
-P 2950 5650
-F 0 "H104" H 3050 5700 50  0000 L CNN
-F 1 "MountingHole" H 3050 5650 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3.2mm_M3" H 2950 5650 50  0001 C CNN
-F 3 "~" H 2950 5650 50  0001 C CNN
-	1    2950 5650
+P 6300 7650
+F 0 "H104" H 6400 7700 50  0000 L CNN
+F 1 "MountingHole" H 6400 7650 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 6300 7650 50  0001 C CNN
+F 3 "~" H 6300 7650 50  0001 C CNN
+	1    6300 7650
 	1    0    0    -1  
 $EndComp
 $Comp
 L basicsensormodule-rescue:MountingHole-Mechanical H103
 U 1 1 5BE9BC53
-P 2950 5450
-F 0 "H103" H 3050 5500 50  0000 L CNN
-F 1 "MountingHole" H 3050 5450 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3.2mm_M3" H 2950 5450 50  0001 C CNN
-F 3 "~" H 2950 5450 50  0001 C CNN
-	1    2950 5450
+P 6300 7450
+F 0 "H103" H 6400 7500 50  0000 L CNN
+F 1 "MountingHole" H 6400 7450 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 6300 7450 50  0001 C CNN
+F 3 "~" H 6300 7450 50  0001 C CNN
+	1    6300 7450
 	1    0    0    -1  
 $EndComp
 $Comp
 L basicsensormodule-rescue:MountingHole-Mechanical H102
 U 1 1 5BE9BC79
-P 2950 5250
-F 0 "H102" H 3050 5300 50  0000 L CNN
-F 1 "MountingHole" H 3050 5250 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3.2mm_M3" H 2950 5250 50  0001 C CNN
-F 3 "~" H 2950 5250 50  0001 C CNN
-	1    2950 5250
+P 6300 7250
+F 0 "H102" H 6400 7300 50  0000 L CNN
+F 1 "MountingHole" H 6400 7250 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 6300 7250 50  0001 C CNN
+F 3 "~" H 6300 7250 50  0001 C CNN
+	1    6300 7250
 	1    0    0    -1  
 $EndComp
 $Comp
 L basicsensormodule-rescue:MountingHole-Mechanical H101
 U 1 1 5BE9BC9F
-P 2950 5050
-F 0 "H101" H 3050 5100 50  0000 L CNN
-F 1 "MountingHole" H 3050 5050 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3.2mm_M3" H 2950 5050 50  0001 C CNN
-F 3 "~" H 2950 5050 50  0001 C CNN
-	1    2950 5050
+P 6300 7050
+F 0 "H101" H 6400 7100 50  0000 L CNN
+F 1 "MountingHole" H 6400 7050 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 6300 7050 50  0001 C CNN
+F 3 "~" H 6300 7050 50  0001 C CNN
+	1    6300 7050
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -285,4 +286,49 @@ Wire Wire Line
 	4350 3900 4175 3900
 Wire Wire Line
 	4175 3900 4175 3875
+$Sheet
+S 4400 5400 1050 700 
+U 5CD559BA
+F0 "MT19" 50
+F1 "hall_effect_sensor.sch" 50
+F2 "VCC" I L 4400 5500 50 
+F3 "GND" O L 4400 5600 50 
+F4 "VOUT" O R 5450 5500 50 
+$EndSheet
+$Comp
+L power:GND #PWR0108
+U 1 1 5CD759B4
+P 4200 5700
+F 0 "#PWR0108" H 4200 5450 50  0001 C CNN
+F 1 "GND" H 4205 5527 50  0000 C CNN
+F 2 "" H 4200 5700 50  0001 C CNN
+F 3 "" H 4200 5700 50  0001 C CNN
+	1    4200 5700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4400 5600 4200 5600
+Wire Wire Line
+	4200 5600 4200 5700
+$Comp
+L power:+5V #PWR0109
+U 1 1 5CD76A38
+P 4200 5450
+F 0 "#PWR0109" H 4200 5300 50  0001 C CNN
+F 1 "+5V" H 4215 5623 50  0000 C CNN
+F 2 "" H 4200 5450 50  0001 C CNN
+F 3 "" H 4200 5450 50  0001 C CNN
+	1    4200 5450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4400 5500 4200 5500
+Wire Wire Line
+	4200 5500 4200 5450
+Wire Wire Line
+	5500 4600 5750 4600
+Wire Wire Line
+	5750 4600 5750 5500
+Wire Wire Line
+	5750 5500 5450 5500
 $EndSCHEMATC

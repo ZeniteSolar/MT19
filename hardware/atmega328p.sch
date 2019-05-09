@@ -1,10 +1,10 @@
 EESchema Schematic File Version 4
 LIBS:basicsensormodule-cache
-EELAYER 26 0
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 5
+Sheet 3 6
 Title ""
 Date ""
 Rev ""
@@ -136,7 +136,6 @@ SCL
 NoConn ~ 5050 3850
 NoConn ~ 5050 3950
 NoConn ~ 5050 4750
-NoConn ~ 5050 4650
 NoConn ~ 5050 4850
 Text Notes 5100 6400 0    60   ~ 0
 http://ww1.microchip.com/downloads/en/appnotes/atmel-2521-avr-hardware-design-considerations_applicationnote_avr042.pdf
@@ -194,8 +193,6 @@ Wire Wire Line
 	5050 4150 4950 4150
 Wire Wire Line
 	4950 4850 5050 4850
-Wire Wire Line
-	5050 4650 4950 4650
 Wire Wire Line
 	5050 4750 4950 4750
 Wire Wire Line
@@ -531,4 +528,8 @@ $EndComp
 Text HLabel 5050 4050 2    60   Input ~ 0
 SDA
 NoConn ~ 5050 3650
+Text HLabel 5050 4650 2    50   Input ~ 0
+VOUT
+Wire Wire Line
+	4950 4650 5050 4650
 $EndSCHEMATC
