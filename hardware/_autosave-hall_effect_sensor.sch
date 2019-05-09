@@ -28,19 +28,6 @@ F 3 "http://www.allegromicro.com/en/Products/Part_Numbers/1101/1101.pdf" H 5650 
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:R_Small R?
-U 1 1 5CD661DC
-P 3950 2450
-AR Path="/5CD661DC" Ref="R?"  Part="1" 
-AR Path="/5CD559BA/5CD661DC" Ref="R101"  Part="1" 
-F 0 "R101" V 3754 2450 50  0000 C CNN
-F 1 "100" V 3845 2450 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3950 2450 50  0001 C CNN
-F 3 "~" H 3950 2450 50  0001 C CNN
-	1    3950 2450
-	0    1    1    0   
-$EndComp
-$Comp
 L Device:D_Zener_Small Z?
 U 1 1 5CD661E2
 P 4300 2900
@@ -95,11 +82,11 @@ $EndComp
 Wire Wire Line
 	3750 2450 3850 2450
 Wire Wire Line
-	4050 2450 4300 2450
+	4200 2450 4300 2450
 Wire Wire Line
 	6400 2450 6400 2500
 Wire Wire Line
-	4300 2800 4300 2450
+	4300 2800 4300 2650
 Connection ~ 4300 2450
 Wire Wire Line
 	4300 2450 4750 2450
@@ -191,37 +178,37 @@ Wire Wire Line
 $Comp
 L power:+5V #PWR?
 U 1 1 5CD6D8F6
-P 3950 2850
+P 3450 2800
 AR Path="/5CD6D8F6" Ref="#PWR?"  Part="1" 
 AR Path="/5CD559BA/5CD6D8F6" Ref="#PWR0113"  Part="1" 
-F 0 "#PWR0113" H 3950 2700 50  0001 C CNN
-F 1 "+5V" H 3965 3023 50  0000 C CNN
-F 2 "" H 3950 2850 50  0001 C CNN
-F 3 "" H 3950 2850 50  0001 C CNN
-	1    3950 2850
+F 0 "#PWR0113" H 3450 2650 50  0001 C CNN
+F 1 "+5V" H 3465 2973 50  0000 C CNN
+F 2 "" H 3450 2800 50  0001 C CNN
+F 3 "" H 3450 2800 50  0001 C CNN
+	1    3450 2800
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 5CD6DFF4
-P 3950 3100
+P 3450 3050
 AR Path="/5CD6DFF4" Ref="#PWR?"  Part="1" 
 AR Path="/5CD559BA/5CD6DFF4" Ref="#PWR0114"  Part="1" 
-F 0 "#PWR0114" H 3950 2850 50  0001 C CNN
-F 1 "GND" H 3955 2927 50  0000 C CNN
-F 2 "" H 3950 3100 50  0001 C CNN
-F 3 "" H 3950 3100 50  0001 C CNN
-	1    3950 3100
+F 0 "#PWR0114" H 3450 2800 50  0001 C CNN
+F 1 "GND" H 3455 2877 50  0000 C CNN
+F 2 "" H 3450 3050 50  0001 C CNN
+F 3 "" H 3450 3050 50  0001 C CNN
+	1    3450 3050
 	1    0    0    -1  
 $EndComp
-Text HLabel 3750 2850 0    50   Input ~ 0
+Text HLabel 3250 2800 0    50   Input ~ 0
 VCC
 Wire Wire Line
-	3750 2850 3950 2850
-Text HLabel 3750 3100 0    50   Output ~ 0
+	3250 2800 3450 2800
+Text HLabel 3250 3050 0    50   Output ~ 0
 GND
 Wire Wire Line
-	3750 3100 3950 3100
+	3250 3050 3450 3050
 Wire Wire Line
 	3550 2450 3450 2450
 Wire Wire Line
@@ -255,4 +242,63 @@ Wire Wire Line
 Connection ~ 6400 3500
 Wire Wire Line
 	6400 3500 6400 3400
+$Comp
+L Device:R_Small R?
+U 1 1 5CDCB5EE
+P 4100 2150
+AR Path="/5CDCB5EE" Ref="R?"  Part="1" 
+AR Path="/5CD559BA/5CDCB5EE" Ref="R601"  Part="1" 
+F 0 "R601" V 3904 2150 50  0000 C CNN
+F 1 "330" V 3995 2150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 4100 2150 50  0001 C CNN
+F 3 "~" H 4100 2150 50  0001 C CNN
+	1    4100 2150
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4200 2650 4300 2650
+Connection ~ 4300 2650
+Wire Wire Line
+	4300 2650 4300 2450
+Wire Wire Line
+	4200 2150 4300 2150
+Wire Wire Line
+	4300 2150 4300 2450
+Wire Wire Line
+	4000 2650 3850 2650
+Wire Wire Line
+	3850 2650 3850 2450
+Connection ~ 3850 2450
+Wire Wire Line
+	3850 2450 4000 2450
+$Comp
+L Device:R_Small R?
+U 1 1 5CDCB2C6
+P 4100 2650
+AR Path="/5CDCB2C6" Ref="R?"  Part="1" 
+AR Path="/5CD559BA/5CDCB2C6" Ref="R103"  Part="1" 
+F 0 "R103" V 4296 2650 50  0000 C CNN
+F 1 "330" V 4205 2650 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 4100 2650 50  0001 C CNN
+F 3 "~" H 4100 2650 50  0001 C CNN
+	1    4100 2650
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R_Small R?
+U 1 1 5CD661DC
+P 4100 2450
+AR Path="/5CD661DC" Ref="R?"  Part="1" 
+AR Path="/5CD559BA/5CD661DC" Ref="R101"  Part="1" 
+F 0 "R101" V 3904 2450 50  0000 C CNN
+F 1 "330" V 3995 2450 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 4100 2450 50  0001 C CNN
+F 3 "~" H 4100 2450 50  0001 C CNN
+	1    4100 2450
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3850 2450 3850 2150
+Wire Wire Line
+	3850 2150 4000 2150
 $EndSCHEMATC
