@@ -121,17 +121,6 @@ Connection ~ 7550 3800
 Wire Wire Line
 	7550 3800 7550 4050
 $Comp
-L Device:C_Small C102
-U 1 1 5BE67608
-P 3525 3925
-F 0 "C102" H 3625 4000 50  0000 L CNN
-F 1 "100nF" H 3625 3925 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3525 3925 50  0001 C CNN
-F 3 "~" H 3525 3925 50  0001 C CNN
-	1    3525 3925
-	1    0    0    -1  
-$EndComp
-$Comp
 L basicsensormodule-rescue:MountingHole-Mechanical H104
 U 1 1 5BE9AF15
 P 6300 7650
@@ -189,17 +178,6 @@ F 3 "" H 7600 4550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR0104
-U 1 1 5BE8FC8C
-P 3525 3650
-F 0 "#PWR0104" H 3525 3500 50  0001 C CNN
-F 1 "+5V" H 3575 3850 50  0000 C CNN
-F 2 "" H 3525 3650 50  0001 C CNN
-F 3 "" H 3525 3650 50  0001 C CNN
-	1    3525 3650
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:+5V #PWR0105
 U 1 1 5BE8FCAE
 P 7400 3700
@@ -210,54 +188,10 @@ F 3 "" H 7400 3700 50  0001 C CNN
 	1    7400 3700
 	1    0    0    -1  
 $EndComp
-$Comp
-L Connector_Generic:Conn_01x04 J1
-U 1 1 5CB1A26C
-P 3000 4125
-F 0 "J1" H 3080 4117 50  0000 L CNN
-F 1 "Conn_01x04" H 3080 4026 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 3000 4125 50  0001 C CNN
-F 3 "~" H 3000 4125 50  0001 C CNN
-	1    3000 4125
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	3525 3775 3525 3825
-Wire Wire Line
-	3525 3650 3525 3775
-Connection ~ 3525 3775
-$Comp
-L power:GND #PWR0101
-U 1 1 5BE8F6F0
-P 3525 4225
-F 0 "#PWR0101" H 3525 3975 50  0001 C CNN
-F 1 "GND" H 3625 4100 50  0000 C CNN
-F 2 "" H 3525 4225 50  0001 C CNN
-F 3 "" H 3525 4225 50  0001 C CNN
-	1    3525 4225
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3200 4025 3525 4025
-Wire Wire Line
-	3200 3775 3200 3925
-Wire Wire Line
-	3200 3775 3525 3775
-Wire Wire Line
-	3200 4125 4150 4125
 Wire Wire Line
 	4150 4125 4150 4350
 Wire Wire Line
 	4150 4350 4350 4350
-Wire Wire Line
-	3275 4475 3275 4225
-Wire Wire Line
-	3275 4225 3200 4225
-Wire Wire Line
-	3275 4475 4350 4475
-Wire Wire Line
-	3525 4225 3525 4025
-Connection ~ 3525 4025
 $Comp
 L power:+5V #PWR0102
 U 1 1 5CB14A9F
@@ -331,4 +265,70 @@ Wire Wire Line
 	5750 4600 5750 5500
 Wire Wire Line
 	5750 5500 5450 5500
+Connection ~ 3525 4025
+Wire Wire Line
+	3525 4225 3525 4025
+Wire Wire Line
+	3275 4475 4350 4475
+Wire Wire Line
+	3275 4225 3200 4225
+Wire Wire Line
+	3275 4475 3275 4225
+Wire Wire Line
+	3200 4125 4150 4125
+Wire Wire Line
+	3200 3775 3525 3775
+Wire Wire Line
+	3200 3775 3200 3925
+Wire Wire Line
+	3200 4025 3525 4025
+$Comp
+L power:GND #PWR0101
+U 1 1 5BE8F6F0
+P 3525 4225
+F 0 "#PWR0101" H 3525 3975 50  0001 C CNN
+F 1 "GND" H 3625 4100 50  0000 C CNN
+F 2 "" H 3525 4225 50  0001 C CNN
+F 3 "" H 3525 4225 50  0001 C CNN
+	1    3525 4225
+	1    0    0    -1  
+$EndComp
+Connection ~ 3525 3775
+Wire Wire Line
+	3525 3650 3525 3775
+Wire Wire Line
+	3525 3775 3525 3825
+$Comp
+L Connector_Generic:Conn_01x04 J1
+U 1 1 5CB1A26C
+P 3000 4125
+F 0 "J1" H 3080 4117 50  0000 L CNN
+F 1 "Conn_01x04" H 3080 4026 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 3000 4125 50  0001 C CNN
+F 3 "~" H 3000 4125 50  0001 C CNN
+	1    3000 4125
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:+5V #PWR0104
+U 1 1 5BE8FC8C
+P 3525 3650
+F 0 "#PWR0104" H 3525 3500 50  0001 C CNN
+F 1 "+5V" H 3575 3850 50  0000 C CNN
+F 2 "" H 3525 3650 50  0001 C CNN
+F 3 "" H 3525 3650 50  0001 C CNN
+	1    3525 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C102
+U 1 1 5BE67608
+P 3525 3925
+F 0 "C102" H 3625 4000 50  0000 L CNN
+F 1 "100nF" H 3625 3925 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3525 3925 50  0001 C CNN
+F 3 "~" H 3525 3925 50  0001 C CNN
+	1    3525 3925
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
