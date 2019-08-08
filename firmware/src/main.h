@@ -29,13 +29,6 @@
 #pragma message "USART: OFF!"
 #endif /*ifdef USART_ON*/
 
-#ifdef UI_ON
-#include "ui.h"
-#pragma message "UI: ON!"
-#else
-#pragma message "UI: OFF!"
-#endif /*ifdef UI_ON*/
-
 #ifdef CAN_ON
 #include "can.h"
 #include "can_filters.h"

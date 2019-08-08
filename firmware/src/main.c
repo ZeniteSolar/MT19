@@ -9,14 +9,6 @@ void init(void)
         VERBOSE_MSG_INIT(usart_send_string("\n\n\nUSART... OK!\n"));
     #endif
 
-    #ifdef UI_ON
-        VERBOSE_MSG_INIT(usart_send_string("UI..."));
-        ui_init();
-        VERBOSE_MSG_INIT(usart_send_string(" OK!\n"));
-    #else
-        VERBOSE_MSG_INIT(usart_send_string("UI... OFF!\n"));
-    #endif
-
     _delay_ms(200);
 
     #ifdef WATCHDOG_ON
@@ -99,6 +91,12 @@ void init(void)
         VERBOSE_MSG_INIT(usart_send_string("LED... OFF!\n"));
     #endif
 
+        clr_bit(RPM_DDR, RPM_INT);                  // rpm como entrada
+        set_bit(RPM_PORT, PORTD);                   //pull up ativo 
+        set_bit(EICRA, ISC01);                      // Habilitação do trigger para falling edge
+        clr_bit(EICRA, ISC00);                      // Desativar interrupção 
+                        
+ 
     #ifdef WATCHDOG_ON
         wdt_reset();
     #endif
@@ -124,7 +122,7 @@ int main(void)
     #endif
 
 	#ifdef SLEEP_ON
-        sleep_mode();   
+        sleep_mode();
 	#endif
 	}
 }

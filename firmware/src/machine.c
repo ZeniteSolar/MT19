@@ -40,6 +40,13 @@ void machine_init(void)
     set_state_initializing();
 } 
 
+void rpm_compute(void)
+{
+    tachometer.rpm_avg_sum += (RPM_TIMER_PERIOD*60.f)/tachometer.interrupt_count;
+    tachometer.interrupt_count = 0;
+    tachometer.rpm_avg_sum_count++;
+}
+
 /**
  * @brief set machine initial state
  */
@@ -56,6 +63,7 @@ inline void set_state_error(void)
 {
     VERBOSE_MSG_MACHINE(usart_send_string("\n>>>STATE ERROR\n"));
     state_machine = STATE_ERROR;
+    rpm_interrupt_disable();
 }
 
 /**
@@ -83,6 +91,11 @@ inline void set_state_running(void)
 {
     VERBOSE_MSG_MACHINE(usart_send_string("\n>>>RUNNING STATE\n"));
     state_machine = STATE_RUNNING;
+    tachometer.interrupt_count = 0;
+    tachometer.rpm_avg_sum_count = 0;
+    tachometer.rpm_avg_sum = 0;
+    tachometer.rpm_avg = 0;
+    rpm_interrupt_enable();
 }
 
 /**
@@ -175,31 +188,8 @@ inline void task_running(void)
         led_clk_div = 0;
     }
 #endif // LED_ON
-        
-    
-#ifdef UI_ON
-    if(ui_clk_div++ >= UI_CLK_DIVIDER_VALUE){        
-        ui_clear();
-        ui_draw_layout();
 
-#ifdef UI_FAKE_DATA
-    static uint16_t fake_data = 0;
-    ui_update_battery_voltage_main(fake_data++);
-    ui_update_battery_voltage_auxiliary(fake_data++);
-    ui_update_battery_voltage_extra(fake_data++);
-    ui_update_battery_current_input(fake_data++);
-    ui_update_battery_current_output(fake_data++);
-#else
-    ui_update_battery_voltage_main(battery_voltage.main);
-    ui_update_battery_voltage_auxiliary(battery_voltage.aux);
-    ui_update_battery_voltage_extra(battery_voltage.dir);
-    ui_update_battery_current_input(battery_current.in);
-    ui_update_battery_current_output(battery_current.out);
-#endif
-        ui_update();
-        ui_clk_div = 0;
-    }
-#endif // UI_ON
+    rpm_compute();
 }
 
 
@@ -343,6 +333,13 @@ ISR(TIMER2_COMPA_vect)
         }*/
         machine_clk = 1;
         machine_clk_divider = 0;
+    }
+}
+
+ISR(INT0_vect)
+{
+    if(!tst_bit(RPM_PIN, RPM_INT)){
+        tachometer.interrupt_count++;
     }
 }
 

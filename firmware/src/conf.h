@@ -34,7 +34,7 @@
 #define LED_ON
 #define WATCHDOG_ON
 #define SLEEP_ON
-#define UI_ON
+
 
 #ifdef ADC_ON
 // ADC CONFIGURATION
@@ -54,10 +54,7 @@
 
 #endif //ADC_ON
 
-#define UI_FAKE_DATA
-#ifdef UI_ON
-#define UI_CLK_DIVIDER_VALUE  50
-#endif // UI_ON
+
 
 #ifdef MACHINE_ON
 // The machine frequency may not be superior of ADC_FREQUENCY/ADC_AVG_SIZE_10
@@ -69,10 +66,6 @@
 #define MACHINE_CLK_DIVIDER_VALUE           1
 #endif // ADC_ON 
 #define MACHINE_FREQUENCY                   (MACHINE_TIMER_FREQUENCY)/(MACHINE_CLK_DIVIDER_VALUE)
-
-// SCALE TO CONVERT ADC DEFINITIONS
-#define VSCALE                              (uint16_t)1000
-
 #endif // MACHINE_ON
 
 #ifdef LED_ON
@@ -90,11 +83,19 @@
 #define     clr_led()               
 #endif // LED_ON
 
+#define rpm_interrupt_enable()  set_bit(EIMSK, INT0);      // Habilitação da interrupção do INT0  
+#define rpm_interrupt_disable()  clr_bit(EIMSK, INT0);  // Desativar interrupção 
+#define RPM_PIN		PIND
+#define RPM_PORT	PORTD	 
+#define RPM_DDR		DDRD
+#define RPM_INT		PD2
+#define RPM_TIMER_PERIOD 1.f/MACHINE_TIMER_FREQUENCY
 
-#ifdef CAN_ON
+#ifdef CAN_ON 
+#define CAN_SIGNATURE_SELF              CAN_SIGNATURE_MT19
 #define SPI_ON
 #define CAN_APP_SEND_STATE_FREQ     40//36000     //<! state msg frequency in Hz
-#define CAN_APP_SEND_ADC_FREQ       4//6000      //<! adc msg frequency in Hz
+#define CAN_APP_SEND_RPM_FREQ       4//6000      //<! adc msg frequency in Hz
 #define CAN_APP_CHECKS_WITHOUT_MSC19_MSG  10
 
 

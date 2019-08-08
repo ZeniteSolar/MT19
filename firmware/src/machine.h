@@ -32,9 +32,6 @@
 #include "can_app.h"
 extern const uint8_t can_filter[];
 #endif // CAN_ON
-#ifdef UI_ON
-#include "ui.h"
-#endif // UI_ON
 
 typedef enum state_machine{
     STATE_INITIALIZING,
@@ -68,26 +65,14 @@ typedef struct measurements{
 }measurements_t;
 */
 
-typedef struct battery_voltage
+typedef struct tachometer
 {
-    uint16_t main;
-    uint16_t aux;
-    uint16_t dir;
-}battery_voltage_t;
+    uint64_t interrupt_count;
+    uint16_t rpm_avg_sum_count;
+    float rpm_avg_sum;
+    uint16_t rpm_avg;
 
-typedef struct battery_current
-{
-    uint16_t in;
-    uint16_t out;
-}battery_current_t;
- 
-
-typedef struct voltmeter_errors
-{
-    uint8_t no_message_from_MSC19_1;
-    uint8_t no_message_from_MSC19_2;
-    uint8_t no_message_from_MSC19_3;
-}voltmeter_errors_t;
+}tachometer_t;
 
 // machine checks
 //void check_buffers(void);
@@ -115,6 +100,10 @@ void set_state_idle(void);
 void set_state_running(void);
 void set_state_reset(void);
 
+// tachometer functions
+void rpm_compute(void);
+void can_app_send_rpm(void);
+
 // machine variables
 volatile state_machine_t state_machine;
 volatile system_flags_t system_flags;
@@ -122,9 +111,7 @@ volatile error_flags_t error_flags;
 
 //volatile measurements_t measurements;
 
-volatile battery_voltage_t battery_voltage;
-volatile battery_current_t battery_current;
-volatile voltmeter_errors_t voltmeter_errors;
+volatile tachometer_t tachometer;
 volatile uint8_t machine_clk;
 volatile uint8_t machine_clk_divider;
 volatile uint8_t total_errors;           // Contagem de ERROS

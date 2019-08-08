@@ -11,7 +11,7 @@
 #define CAN_FILTERS_H
 
 #include "conf.h"
-#include "can_ids.h"
+#include "../CAN_IDS19/can_ids.h"
 
 // -----------------------------------------------------------------------------
 /** Set filters and masks.
