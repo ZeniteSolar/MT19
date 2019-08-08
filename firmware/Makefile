@@ -95,7 +95,6 @@ LDFLAGS = -Wl,-Map=$(OBJDIR)/$(TARGET).map
 LDFLAGS += $(patsubst %,-L%,$(EXTRALIBDIRS))
 LDFLAGS += $(PRINTF_LIB) $(SCANF_LIB) $(MATH_LIB)
 LDFLAGS += -Llib/avr-can-lib/src/ -lcan
-LDFLAGS += -static -Llib/DISPLAYS/SSD1306_AVR/ -lssd1306
 
 ## Intel Hex file production flags
 HEX_FLASH_FLAGS = \
@@ -119,7 +118,8 @@ directories:
 
 # size
 size: $(TARGET).elf
-	$(SILENT) $(SIZE) -C --mcu=$(MCU) $(BINDIR)/$<
+#	$(SILENT) $(SIZE) -B --mcu=$(MCU) $(BINDIR)/$<
+	@echo ""
 
 # clean
 ifneq ($(wildcard $(OBJS) $(TARGET).elf $(TARGET).hex $(TARGET).eep $(TARGET).map $(OBJS:%.o=%.d=%.map) $(OBJS:%.o=%.lst=%.map)), )
