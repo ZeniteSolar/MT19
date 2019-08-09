@@ -42,9 +42,22 @@ void machine_init(void)
 
 void rpm_compute(void)
 {
-    tachometer.rpm_avg_sum += (RPM_TIMER_PERIOD*60.f)/tachometer.interrupt_count;
+    #ifdef VERBOSE_ON_RPM
+    usart_send_string("int: ");
+    usart_send_uint16(tachometer.interrupt_count);
+    usart_send_string(", sum: ");
+    #endif
+
+    tachometer.rpm_avg_sum += (uint16_t)((float)--tachometer.interrupt_count * 60)/((float)RPM_TIMER_PERIOD * RPM_COMPUTE_CLK_DIV * RPM_INTERRUPTS_PER_REVOLUTION);
     tachometer.interrupt_count = 0;
     tachometer.rpm_avg_sum_count++;
+
+    #ifdef VERBOSE_ON_RPM
+    usart_send_uint16(tachometer.rpm_avg_sum);
+    usart_send_string(", count: ");
+    usart_send_uint16(tachometer.rpm_avg_sum_count);
+    usart_send_char('\n');
+    #endif
 }
 
 /**
@@ -189,7 +202,10 @@ inline void task_running(void)
     }
 #endif // LED_ON
 
-    rpm_compute();
+    if(rpm_compute_clk_div++ > RPM_COMPUTE_CLK_DIV){
+        rpm_compute_clk_div = 0;
+        rpm_compute();
+    }
 }
 
 

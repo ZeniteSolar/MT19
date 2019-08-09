@@ -4,5 +4,5 @@ make clean
 rm -rf bin obj
 make all
 #fuser -k /dev/ttyACM0
-avrdude -c arduino -P COM4 -p m328p -D -U flash:w:bin/firmware.elf
+avrdude -c arduino -P COM5 -p m328p -D -U flash:w:bin/firmware.elf
 #figlet "MVC19"

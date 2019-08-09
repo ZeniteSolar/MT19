@@ -6,9 +6,11 @@
 
 void compute_rpm_avg(void)
 {
-    tachometer.rpm_avg = (uint16_t)(tachometer.rpm_avg_sum/tachometer.rpm_avg_sum_count);
-    tachometer.rpm_avg_sum = 0;
-    tachometer.rpm_avg_sum_count = 0;
+    if(tachometer.rpm_avg_sum_count){
+        tachometer.rpm_avg = tachometer.rpm_avg_sum/tachometer.rpm_avg_sum_count;
+        tachometer.rpm_avg_sum = 0;
+        tachometer.rpm_avg_sum_count = 0;
+    }
 }
 
 

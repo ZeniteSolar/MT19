@@ -69,7 +69,7 @@ typedef struct tachometer
 {
     uint64_t interrupt_count;
     uint16_t rpm_avg_sum_count;
-    float rpm_avg_sum;
+    uint16_t rpm_avg_sum;
     uint16_t rpm_avg;
 
 }tachometer_t;
@@ -112,13 +112,13 @@ volatile error_flags_t error_flags;
 //volatile measurements_t measurements;
 
 volatile tachometer_t tachometer;
+volatile uint32_t rpm_compute_clk_div;
 volatile uint8_t machine_clk;
 volatile uint8_t machine_clk_divider;
 volatile uint8_t total_errors;           // Contagem de ERROS
 
 // other variables
 volatile uint8_t led_clk_div;
-volatile uint8_t ui_clk_div;
 
 // ISRs
 ISR(TIMER2_COMPA_vect);
