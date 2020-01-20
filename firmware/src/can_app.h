@@ -14,7 +14,7 @@
 #include "dbg_vrb.h"
 #include "../lib/bit_utils.h"
 #include "can.h"
-#include "../CAN_IDS19/can_ids.h"
+#include "can_ids.h"
 #include "machine.h"
 #include "usart.h"
 
