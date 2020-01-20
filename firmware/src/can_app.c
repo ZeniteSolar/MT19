@@ -62,7 +62,7 @@ inline void can_app_task(void)
 inline void can_app_send_state(void)
 {
     can_t msg;
-    msg.id                                  = CAN_FILTER_MSG_MT19_STATE;
+    msg.id                                  = CAN_MSG_MT19_STATE_ID;
     msg.length                              = CAN_LENGTH_MSG_STATE;
     msg.flags.rtr = 0;
 
@@ -79,7 +79,7 @@ inline void can_app_send_state(void)
 inline void can_app_send_rpm(void)
 { 
     can_t msg;
-    msg.id                                  = CAN_FILTER_MSG_MT19_RPM;
+    msg.id                                  = CAN_MSG_MT19_RPM;
     msg.length                              = CAN_LENGTH_MSG_MT19_RPM;
     msg.flags.rtr = 0;
     
