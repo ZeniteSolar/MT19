@@ -4,6 +4,11 @@
 # How to use:
 # 	-Edit Project Settings
 #	-This file should be at the root dir of the project
+#	-install gcc-avr
+#	The avr-libc from savannah doesn't support yet the atmega328pb. But the Atmel
+#	distribution does it, so:
+#	-install avr-libc from Atmel (aur: avr-libc-atmel )
+#	-install Atmel 'ATmega Series Device Support' from http://packs.download.atmel.com/ (aur: avr-libc-atmel-atmega328pb )
 #
 # 	-Commans:
 #		make				to compile
@@ -39,9 +44,11 @@ MAIN 		= 	main
 MCU 		?=	atmega328p
 F_CPU		?=	16000000UL
 # Optimization
-OPT=s
+OPT			=	2
+# Debug
+DEBUG		=	dwarf-2
 # documentation (auto generated)
-DOXYFILE_MK		=	Doxyfile
+DOXYFILE_MK	=	Doxyfile
 
 ########### Project Settings ends here
 ################################################################################
@@ -59,7 +66,8 @@ SRCS	=	$(shell find $(SRCDIR) -type f -name \*.c)
 OBJS	=	$(patsubst $(SRCDIR)/%,$(OBJDIR)/%,$(SRCS:.c=.o))
 
 SILENT ?= @
-CROSS ?= avr-
+#CROSS ?= avr-
+CROSS ?= ~/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/bin/avr-
 ifneq ($(CROSS), )
 	CC = $(CROSS)gcc
 	CXX = $(CROSS)g++
@@ -84,17 +92,53 @@ $(foreach i,$(SPECIAL_DEFS),$(eval $(call CHECK_ANSWER,$(i))))
 
 ##
 
+#---------------- Compiler Options C ----------------
+#  -g*:          generate debugging information
+#  -O*:          optimization level
+#  -f...:        tuning, see GCC manual and avr-libc documentation
+#  -Wall...:     warning level
+#  -Wa,...:      tell GCC to pass this to the assembler.
+#  -adhlns...:   create assembler listing
+#  INFO: https://www.nongnu.org/avr-libc/user-manual/using_tools.html
+#CFLAGS += $(CDEFS)
+CFLAGS += -O$(OPT)
+#CFLAGS += -g$(DEBUG)
+#CFLAGS += -funsigned-char
+#CFLAGS += -funsigned-bitfields
+#CFLAGS += -fpack-struct
+#CFLAGS += -fshort-enums
+CFLAGS += -Wall
+#CFLAGS += -Wstrict-prototypes
+#CFLAGS += -mshort-calls
+#CFLAGS += -ffunction-sections
+#CFLAGS += -fdata-sections
+#CFLAGS += -ffreestanding
+#CFLAGS += -mcall-prologues
+#CFLAGS += --param inline-call-cost=2
+#CFLAGS += -finline-limit=3
+#CFLAGS += -fno-inline-small-functions
+#CFLAGS += -fno-unit-at-a-time
+#CFLAGS += -Wundef
+#CFLAGS += -Wunreachable-code
+#CFLAGS += -Wsign-compare
+#CFLAGS += -Waddr-space-convert
+#CFLAGS += -Wmisspelled-isr
+#CFLAGS += -Wa,-adhlns=$(<:%.c=$(OBJDIR)/%.lst)
+#CFLAGS += $(patsubst %,-I%,$(EXTRAINCDIRS))
+CFLAGS += -mmcu=$(MCU)
+CFLAGS += -std=gnu99
+CFLAGS += -DF_CPU=$(F_CPU)
+#CFLAGS += -finput-charset=utf-8 -fexec-charset=iso-8859-15
 
-CFLAGS += \
-	-O$(OPT) \
-	-Wall \
-	-std=gnu99 \
-	-mmcu=$(MCU)
+CFLAGSALT += \
+	-D__AVR_DEV_LIB_NAME__=m328pb
 
-LDFLAGS = -Wl,-Map=$(OBJDIR)/$(TARGET).map
+LDFLAGS = -Wl,-Map=$(OBJDIR)/$(TARGET).map,--cref
 LDFLAGS += $(patsubst %,-L%,$(EXTRALIBDIRS))
-LDFLAGS += $(PRINTF_LIB) $(SCANF_LIB) $(MATH_LIB)
-LDFLAGS += -Llib/avr-can-lib/src/ -lcan
+#LDFLAGS += $(PRINTF_LIB) $(SCANF_LIB) 
+LDFLAGS += $(MATH_LIB)
+LDFLAGS += -static -Llib/avr-can-lib/src/ -lcan
+#LDFLAGS += -static -Llib/DISPLAYS/SSD1306_AVR/ -lssd1306
 
 ## Intel Hex file production flags
 HEX_FLASH_FLAGS = \
@@ -118,8 +162,7 @@ directories:
 
 # size
 size: $(TARGET).elf
-#	$(SILENT) $(SIZE) -B --mcu=$(MCU) $(BINDIR)/$<
-	@echo ""
+	$(SILENT) $(SIZE) -C --mcu=${MCU:b=} $(BINDIR)/$<
 
 # clean
 ifneq ($(wildcard $(OBJS) $(TARGET).elf $(TARGET).hex $(TARGET).eep $(TARGET).map $(OBJS:%.o=%.d=%.map) $(OBJS:%.o=%.lst=%.map)), )
@@ -138,7 +181,7 @@ MKDIR_P := mkdir -p
 %.elf: $(OBJS)
 	@echo "Linking:" $@...
 	@echo ""
-	$(SILENT) $(CC) $(CFLAGS) $(OBJS) -o $(BINDIR)/$@ $(LDFLAGS)
+	$(SILENT) $(CC) $(CFLAGSALT) $(CFLAGS) $(OBJS) -o $(BINDIR)/$@ $(LDFLAGS)
 
 %.hex: $(TARGET)
 	@echo "hex..:"
@@ -149,12 +192,12 @@ MKDIR_P := mkdir -p
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@echo "[$(TARGET)] Compiling:" $@...
 	@echo ""
-	$(SILENT) $(CC) $(CFLAGS) -MMD -MF $(@:%.o=%.d) -c $< -o $@
+	$(SILENT) $(CC) $(CFLAGSALT) $(CFLAGS) -MMD -MF $(@:%.o=%.d) -c $< -o $@
 
 $(OBJDIR)/%.d: $(SRCDIR)/%.c
 	@echo "[$(TARGET)] Generating dependency:" $@...
 	@echo ""
-	$(SILENT) $(CC) $(CFLAGS) -MM -MT $(addsuffix .o, $(basename $@)) -MF $@ $<
+	$(SILENT) $(CC) $(CFLAGSALT) $(CFLAGS) -MM -MT $(addsuffix .o, $(basename $@)) -MF $@ $<
 
 ## Docs
 
@@ -170,13 +213,11 @@ rmdoc:
 	@rm -rf doc
 ###############
 
-
-
 ## Programming
 
 AVRDUDE := avrdude
-AVRDUDE_PORT = /dev/ttyACM0
-#AVRDUDE_SPEED = 9600
+AVRDUDE_PORT = /dev/ttyUSB0
+AVRDUDE_SPEED = 115200
 AVRDUDE_PROGRAMMER = arduino
 
 AVRDUDE_FLAGS += -p $(MCU)
@@ -194,87 +235,6 @@ endif
 ifeq ($(SILENT), )
   AVRDUDE_FLAGS += -v -v
 endif
-
-# Fuses for internal 8MHz oscillator
-ifeq ($(MCU), atmega328p)
-  AVRDUDE_WRITE_FUSE ?= -U lfuse:w:0xe2:m -U hfuse:w:0xd9:m
-endif
-ifeq ($(MCU), atmega88)
-  AVRDUDE_WRITE_FUSE ?= -U lfuse:w:0xe2:m -U hfuse:w:0xdf:m
-endif
-ifeq ($(MCU), atmega8)
-  AVRDUDE_WRITE_FUSE ?= -U lfuse:w:0xe4:m -U hfuse:w:0xd9:m
-endif
-ifeq ($(MCU), $(filter $(MCU), attiny2313 attiny4313))
-  AVRDUDE_WRITE_FUSE ?= -U lfuse:w:0xE4:m
-  #AVRDUDE_WRITE_FLASH := -U lfuse:w:0x64:m #run with 1 Mhz clock #default clock mode
-endif
-
-# flash and fuse
-ifneq ($(AVRDUDE_PROGRAMMER), )
-flash: $(TARGET).hex #$(TARGET).eep
-	$(AVRDUDE) $(AVRDUDE_FLAGS) -U flash:w:$(TARGET).hex
-	#$(AVRDUDE) $(AVRDUDE_FLAGS) -U eeprom:w:$(TARGET).eep
-
-fuse:
-	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FUSE)
-
-%.hex: $(BINDIR)/%.elf
-	@echo "Creating flash file:" $@...
-	$(SILENT) $(OBJCOPY) -O ihex -R .eeprom $< $(BINDIR)/$@
-
-%.eep: $(BINDIR)/%.elf
-	@echo "Creating eeprom file:" $@...
-	$(SILENT) $(OBJCOPY) -j .eeprom --set-section-flags=.eeprom="alloc,load" \
-	--change-section-lma .eeprom=0 -O ihex $< $@
-else
-FLASH_MSG="You need to set AVRDUDE_PROGRAMMER/AVRDUDE_PORT/AVRDUDE_SPEED in ~/user.mk"
-flash:
-	@echo $(FLASH_MSG)
-
-fuse:
-	@echo $(FLASH_MSG)
-endif
-
-# bootloader
-
-OPTIBOOT_BOOTLOADER = /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/bootloaders/optiboot/optiboot_atmega328_pro_8MHz.hex
-ARDUINO_BOOTLOADER = /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/bootloaders/optiboot/optiboot_atmega328_pro_8MHz.hex
-AVRDUDE_UNLOCK_FUSE = -U lock:w:0x3F:m
-AVRDUDE_LOCK_FUSE = -U lock:w:0x0F:m
-AVRDUDE_BOOTLOADER_FUSE_INT_8MHZ = -U lfuse:w:0xe2:m -U efuse:w:0x05:m
-AVRDUDE_BOOTLOADER_FUSE_EXT_16MHZ =  -U lfuse:w:0xff:m -U efuse:w:0x05:m
-AVRDUDE_BOOTLOADER_FUSE_SIZE_OPTIBOOT = -U hfuse:w:0xde:m
-AVRDUDE_BOOTLOADER_FUSE_SIZE_ARDUINO = -U hfuse:w:0xda:m
-
-bootloader_8mhz:
-	@echo "Burning bootloader..."
-	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_UNLOCK_FUSE)
-	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_BOOTLOADER_FUSE_INT_8MHZ) $(AVRDUDE_BOOTLOADER_FUSE_SIZE_ARDUINO)
-	$(AVRDUDE) $(AVRDUDE_FLAGS) -e -U flash:w:$(ARDUINO_BOOTLOADER)
-	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_LOCK_FUSE)
-
-bootloader_16mhz:
-	@echo "Burning bootloader..."
-	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_UNLOCK_FUSE)
-	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_BOOTLOADER_FUSE_EXT_16MHZ) $(AVRDUDE_BOOTLOADER_FUSE_SIZE_ARDUINO)
-	$(AVRDUDE) $(AVRDUDE_FLAGS) -e -U flash:w:$(ARDUINO_BOOTLOADER)
-	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_LOCK_FUSE)
-
-optiboot_8mhz:
-	@echo "Burning bootloader..."
-	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_UNLOCK_FUSE)
-	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_BOOTLOADER_FUSE_INT_8MHZ) $(AVRDUDE_BOOTLOADER_FUSE_SIZE_OPTIBOOT)
-	$(AVRDUDE) $(AVRDUDE_FLAGS) -e -U flash:w:$(OPTIBOOT_BOOTLOADER)
-	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_LOCK_FUSE)
-
-optiboot_16mhz:
-	@echo "Burning bootloader..."
-	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_UNLOCK_FUSE)
-	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_BOOTLOADER_FUSE_EXT_16MHZ) $(AVRDUDE_BOOTLOADER_FUSE_SIZE_OPTIBOOT)
-	$(AVRDUDE) $(AVRDUDE_FLAGS) -e -U flash:w:$(OPTIBOOT_BOOTLOADER)
-	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_LOCK_FUSE)
-
 
 ###############
 
