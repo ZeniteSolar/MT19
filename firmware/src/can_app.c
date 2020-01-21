@@ -63,12 +63,12 @@ inline void can_app_send_state(void)
 {
     can_t msg;
     msg.id                                  = CAN_MSG_MT19_STATE_ID;
-    msg.length                              = CAN_LENGTH_MSG_STATE;
+    msg.length                              = CAN_MSG_GENERIC_STATE_LENGTH;
     msg.flags.rtr = 0;
 
-    msg.data[CAN_SIGNATURE_BYTE]            = CAN_SIGNATURE_SELF;
-    msg.data[CAN_STATE_MSG_STATE_BYTE]      = (uint8_t) state_machine;
-    msg.data[CAN_STATE_MSG_ERROR_BYTE]      = error_flags.all;
+    msg.data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE]            = CAN_SIGNATURE_SELF;
+    msg.data[CAN_MSG_GENERIC_STATE_STATE_BYTE]      = (uint8_t) state_machine;
+    msg.data[CAN_MSG_GENERIC_STATE_ERROR_BYTE]      = error_flags.all;
 
     can_send_message(&msg);
 #ifdef VERBOSE_MSG_CAN_APP
@@ -84,7 +84,7 @@ inline void can_app_send_rpm(void)
     msg.flags.rtr = 0;
     
     compute_rpm_avg();
-    msg.data[CAN_SIGNATURE_BYTE]            = CAN_SIGNATURE_SELF;
+    msg.data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE]            = CAN_SIGNATURE_SELF;
     msg.data[CAN_MSG_MT19_RPM_AVG_H_BYTE]   = HIGH(tachometer.rpm_avg);
     msg.data[CAN_MSG_MT19_RPM_AVG_L_BYTE]   = LOW(tachometer.rpm_avg);
 
