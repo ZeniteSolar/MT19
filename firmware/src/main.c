@@ -46,15 +46,7 @@ void init(void)
     #ifdef WATCHDOG_ON
         wdt_reset();
     #endif
-/*
-    #ifdef ADC_ON
-        VERBOSE_MSG_INIT(usart_send_string("ADC..."));
-        adc_init();
-        VERBOSE_MSG_INIT(usart_send_string(" OK!\n"));
-    #else
-        VERBOSE_MSG_INIT(usart_send_string("ADC... OFF!\n"));
-    #endif
-*/
+
     #ifdef WATCHDOG_ON
         wdt_reset();
     #endif

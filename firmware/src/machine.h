@@ -55,23 +55,15 @@ typedef union error_flags{
     uint8_t   all;
 }error_flags_t;
 
-/*
-typedef struct measurements{
-    uint16_t    adc0_avg;       // average value of ADC0
-    uint16_t    adc0_avg_sum_count;
-    uint64_t    adc0_avg_sum;   // average value of ADC0
-    uint16_t    adc0_min;       // period minimum value of ADC0
-    uint16_t    adc0_max;       // period maximum value of ADC0
-}measurements_t;
-*/
+void tachometer_init(void);
 
 typedef struct tachometer
 {
-    uint64_t interrupt_count;
+    uint8_t started;
+    uint16_t overflow_counter;
     uint16_t rpm_avg_sum_count;
     uint16_t rpm_avg_sum;
     uint16_t rpm_avg;
-
 }tachometer_t;
 
 // machine checks
