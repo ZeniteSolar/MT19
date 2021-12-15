@@ -60,10 +60,12 @@ void tachometer_init(void);
 typedef struct tachometer
 {
     uint8_t started;
+	uint8_t lock;
     uint16_t overflow_counter;
-    uint16_t rpm_avg_sum_count;
-    uint16_t rpm_avg_sum;
-    uint16_t rpm_avg;
+    uint16_t dt_avg_sum_count;
+    uint64_t dt_avg_sum;
+    uint32_t dt_avg;
+	float rpm;
 }tachometer_t;
 
 // machine checks
@@ -93,8 +95,8 @@ void set_state_running(void);
 void set_state_reset(void);
 
 // tachometer functions
-void rpm_compute(void);
 void can_app_send_rpm(void);
+void compute_rpm_avg(void);
 
 // machine variables
 volatile state_machine_t state_machine;
@@ -104,7 +106,6 @@ volatile error_flags_t error_flags;
 //volatile measurements_t measurements;
 
 volatile tachometer_t tachometer;
-volatile uint32_t rpm_compute_clk_div;
 volatile uint8_t machine_clk;
 volatile uint8_t machine_clk_divider;
 volatile uint8_t total_errors;           // Contagem de ERROS

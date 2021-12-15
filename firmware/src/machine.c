@@ -88,15 +88,17 @@ inline void set_state_running(void)
 
 void tachometer_init(void) {
     tachometer.started = 0;
-    tachometer.overflow_count = 0;
-    tachometer.rpm_avg_sum_count = 0;
-    tachometer.rpm_avg_sum = 0;
-    tachometer.rpm_avg = 0;
+    tachometer.overflow_counter = 0;
+    tachometer.dt_avg_sum_count = 0;
+    tachometer.dt_avg_sum = 0;
+    tachometer.dt_avg = 0;
+	tachometer.lock = 0;
 
+	ICR1 = 0x00;
     TCCR1A = 0x00;  // ?
     TCCR1B =(1 << ICES1);  // Capture on rising edge
     TIMSK1 |= (1 << ICIE1) | (1 << TOIE1);  // Enable input capture and overflow interrupts    
-    TCCR1B |= (1 << CS10);  // Start counter
+    TCCR1B |= (1 << CS12) | (1 << CS10);  // Set prescaler (15625 hz) -> aprox 1% rpm
 }
 
 /**
@@ -190,12 +192,6 @@ inline void task_running(void)
     }
 #endif // LED_ON
 
-/*
-    if(rpm_compute_clk_div++ > RPM_COMPUTE_CLK_DIV){
-        rpm_compute_clk_div = 0;
-        rpm_compute();
-    }
-*/
 }
 
 
@@ -347,23 +343,24 @@ ISR(TIMER1_CAPT_vect)
     static uint16_t t2 = 0;
 
     if(tachometer.started == 0){
-        t1 = time();
+        t1 = ICR1;
         tachometer.started = 1;
     }else{
-        t2 = time();
+        t2 = ICR1;
+		if(!tachometer.lock){
+        	tachometer.dt_avg_sum += ((uint32_t)(t2 - t1)) 
+            	                    | (((uint32_t)tachometer.overflow_counter) << 16);
+        	tachometer.dt_avg_sum_count++;
+        	tachometer.overflow_counter = 0;
 
-        tachometer.rpm_avg_sum += ((uint32_t)(t2 - t1)) 
-                                | (((uint32_t)tachometer.overflow_counter) << 16);
-        tachometer.rpm_avg_sum_count++;
-        tachometer.overflow_counter = 0;
-
-        t1 = t2;
+        	t1 = t2;
+		}
     }
 }
 
 ISR(TIMER1_OVF_vect)
 {
     if (++tachometer.overflow_counter == 0) {
-        tachometer.tachometer = 0;
+        tachometer.started = 0;
     }
 }

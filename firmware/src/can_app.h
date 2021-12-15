@@ -34,6 +34,6 @@ void check_can(void);
 #endif
 
 uint32_t can_app_send_state_clk_div;
-uint32_t can_app_send_rpm_clk_div;
+uint32_t can_app_send_tachometer_clk_div;
 
 #endif /* ifndef CAN_APP_H */
