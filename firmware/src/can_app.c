@@ -1,5 +1,12 @@
 #include "can_app.h"
 
+uint32_t can_app_send_state_clk_div;
+uint32_t can_app_send_tachometer_clk_div;
+
+extern tachometer_t tachometer;
+extern state_machine_t state_machine;
+extern error_flags_t error_flags;
+
 /**
  * @brief Prints a can message via usart
  */

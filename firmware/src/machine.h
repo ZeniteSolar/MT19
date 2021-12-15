@@ -98,21 +98,6 @@ void set_state_reset(void);
 void can_app_send_rpm(void);
 void compute_rpm_avg(void);
 
-// machine variables
-volatile state_machine_t state_machine;
-volatile system_flags_t system_flags;
-volatile error_flags_t error_flags;
-
-//volatile measurements_t measurements;
-
-volatile tachometer_t tachometer;
-volatile uint8_t machine_clk;
-volatile uint8_t machine_clk_divider;
-volatile uint8_t total_errors;           // Contagem de ERROS
-
-// other variables
-volatile uint8_t led_clk_div;
-
 // ISRs
 ISR(TIMER2_COMPA_vect);
 ISR(PCINT2_vect);
