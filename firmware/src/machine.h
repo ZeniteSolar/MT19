@@ -65,7 +65,7 @@ typedef struct tachometer
     uint16_t dt_avg_sum_count;
     uint64_t dt_avg_sum;
     uint32_t dt_avg;
-	float rpm;
+	uint32_t rpm;
 }tachometer_t;
 
 // machine checks

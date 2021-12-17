@@ -109,7 +109,7 @@ void tachometer_init(void) {
     tachometer.dt_avg_sum = 0;
     tachometer.dt_avg = 0;
 	tachometer.lock = 0;
-
+	tachometer.rpm = 0;
 	ICR1 = 0x00;
     TCCR1A = 0x00;  // ?
     TCCR1B =(1 << ICES1);  // Capture on rising edge

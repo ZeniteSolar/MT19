@@ -16,12 +16,14 @@ void compute_rpm_avg(void)
     if(tachometer.dt_avg_sum_count){
 		tachometer.lock = 1;
         tachometer.dt_avg = tachometer.dt_avg_sum/tachometer.dt_avg_sum_count;
-        tachometer.dt_avg_sum = 0;
-        tachometer.dt_avg_sum_count = 0;
-		tachometer.lock = 0;
-		tachometer.rpm = 60 * 1e6 /  (tachometer.dt_avg * 64);
     }
-
+    tachometer.dt_avg_sum = 0;
+    tachometer.dt_avg_sum_count = 0;
+	tachometer.lock = 0;
+	tachometer.rpm = 60 * 1e6 /  (tachometer.dt_avg * 64);
+	VERBOSE_MSG_MACHINE(usart_send_string("RPM: "));
+	VERBOSE_MSG_MACHINE(usart_send_uint32(tachometer.rpm));
+	VERBOSE_MSG_MACHINE(usart_send_string("\n"));
 	//avg_dt = avg_dt_sum / avg_dt_sum_counter;
 	//avg_rpm = 60 * 1E6 / (avg_dt * 64)
 }
@@ -55,6 +57,7 @@ inline void can_app_task(void)
 {
     check_can();
                                             
+    VERBOSE_MSG_CAN_APP(usart_send_string("CAN.\n"));
     if(can_app_send_state_clk_div++ >= CAN_APP_SEND_STATE_CLK_DIV){
 #ifdef USART_ON
         VERBOSE_MSG_CAN_APP(usart_send_string("state msg was sent.\n"));
@@ -98,8 +101,8 @@ inline void can_app_send_rpm(void)
     
     compute_rpm_avg();
     msg.data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE]            = CAN_SIGNATURE_SELF;
-    msg.data[CAN_MSG_MT19_RPM_AVG_H_BYTE]   = HIGH(tachometer.dt_avg);
-    msg.data[CAN_MSG_MT19_RPM_AVG_L_BYTE]   = LOW(tachometer.dt_avg);
+    msg.data[CAN_MSG_MT19_RPM_AVG_H_BYTE]   = HIGH(tachometer.rpm);
+    msg.data[CAN_MSG_MT19_RPM_AVG_L_BYTE]   = LOW(tachometer.rpm);
 
     can_send_message(&msg);
 #ifdef VERBOSE_MSG_CAN_APP
