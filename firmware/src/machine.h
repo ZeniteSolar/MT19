@@ -55,23 +55,17 @@ typedef union error_flags{
     uint8_t   all;
 }error_flags_t;
 
-/*
-typedef struct measurements{
-    uint16_t    adc0_avg;       // average value of ADC0
-    uint16_t    adc0_avg_sum_count;
-    uint64_t    adc0_avg_sum;   // average value of ADC0
-    uint16_t    adc0_min;       // period minimum value of ADC0
-    uint16_t    adc0_max;       // period maximum value of ADC0
-}measurements_t;
-*/
+void tachometer_init(void);
 
 typedef struct tachometer
 {
-    uint64_t interrupt_count;
-    uint16_t rpm_avg_sum_count;
-    uint16_t rpm_avg_sum;
-    uint16_t rpm_avg;
-
+    uint8_t started;
+	uint8_t lock;
+    uint16_t overflow_counter;
+    uint16_t dt_avg_sum_count;
+    uint64_t dt_avg_sum;
+    uint32_t dt_avg;
+	uint32_t rpm;
 }tachometer_t;
 
 // machine checks
@@ -101,24 +95,8 @@ void set_state_running(void);
 void set_state_reset(void);
 
 // tachometer functions
-void rpm_compute(void);
 void can_app_send_rpm(void);
-
-// machine variables
-volatile state_machine_t state_machine;
-volatile system_flags_t system_flags;
-volatile error_flags_t error_flags;
-
-//volatile measurements_t measurements;
-
-volatile tachometer_t tachometer;
-volatile uint32_t rpm_compute_clk_div;
-volatile uint8_t machine_clk;
-volatile uint8_t machine_clk_divider;
-volatile uint8_t total_errors;           // Contagem de ERROS
-
-// other variables
-volatile uint8_t led_clk_div;
+void compute_rpm_avg(void);
 
 // ISRs
 ISR(TIMER2_COMPA_vect);

@@ -381,7 +381,8 @@ DEBUG_HOST = localhost
 
 
 # Define programs and commands.
-CROSS ?= ~/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/bin/avr-
+CROSS ?= avr-
+#CROSS ?= ~/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino5/bin/avr-
 SHELL = sh
 CC = $(CROSS)gcc
 OBJCOPY = $(CROSS)objcopy

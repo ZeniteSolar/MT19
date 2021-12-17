@@ -1,5 +1,21 @@
 #include "machine.h"
 
+// machine variables
+volatile state_machine_t state_machine;
+volatile system_flags_t system_flags;
+volatile error_flags_t error_flags;
+
+//volatile measurements_t measurements;
+
+volatile tachometer_t tachometer;
+volatile uint8_t machine_clk;
+volatile uint8_t machine_clk_divider;
+volatile uint8_t total_errors;           // Contagem de ERROS
+
+// other variables
+volatile uint8_t led_clk_div;
+
+
 /**
  * @brief 
  */
@@ -38,26 +54,6 @@ void machine_init(void)
  
     set_machine_initial_state();
     set_state_initializing();
-} 
-
-void rpm_compute(void)
-{
-    #ifdef VERBOSE_ON_RPM
-    usart_send_string("int: ");
-    usart_send_uint16(tachometer.interrupt_count);
-    usart_send_string(", sum: ");
-    #endif
-
-    tachometer.rpm_avg_sum += (uint16_t)((float)--tachometer.interrupt_count * 60)/((float)RPM_TIMER_PERIOD * RPM_COMPUTE_CLK_DIV * RPM_INTERRUPTS_PER_REVOLUTION);
-    tachometer.interrupt_count = 0;
-    tachometer.rpm_avg_sum_count++;
-
-    #ifdef VERBOSE_ON_RPM
-    usart_send_uint16(tachometer.rpm_avg_sum);
-    usart_send_string(", count: ");
-    usart_send_uint16(tachometer.rpm_avg_sum_count);
-    usart_send_char('\n');
-    #endif
 }
 
 /**
@@ -76,7 +72,6 @@ inline void set_state_error(void)
 {
     VERBOSE_MSG_MACHINE(usart_send_string("\n>>>STATE ERROR\n"));
     state_machine = STATE_ERROR;
-    rpm_interrupt_disable();
 }
 
 /**
@@ -104,11 +99,22 @@ inline void set_state_running(void)
 {
     VERBOSE_MSG_MACHINE(usart_send_string("\n>>>RUNNING STATE\n"));
     state_machine = STATE_RUNNING;
-    tachometer.interrupt_count = 0;
-    tachometer.rpm_avg_sum_count = 0;
-    tachometer.rpm_avg_sum = 0;
-    tachometer.rpm_avg = 0;
-    rpm_interrupt_enable();
+    tachometer_init();
+}
+
+void tachometer_init(void) {
+    tachometer.started = 0;
+    tachometer.overflow_counter = 0;
+    tachometer.dt_avg_sum_count = 0;
+    tachometer.dt_avg_sum = 0;
+    tachometer.dt_avg = 0;
+	tachometer.lock = 0;
+	tachometer.rpm = 0;
+	ICR1 = 0x00;
+    TCCR1A = 0x00;  // ?
+    TCCR1B =(1 << ICES1);  // Capture on rising edge
+    TIMSK1 |= (1 << ICIE1) | (1 << TOIE1);  // Enable input capture and overflow interrupts    
+    TCCR1B |= (1 << CS12) | (1 << CS10);  // Set prescaler (15625 hz) -> aprox 1% rpm
 }
 
 /**
@@ -202,10 +208,6 @@ inline void task_running(void)
     }
 #endif // LED_ON
 
-    if(rpm_compute_clk_div++ > RPM_COMPUTE_CLK_DIV){
-        rpm_compute_clk_div = 0;
-        rpm_compute();
-    }
 }
 
 
@@ -304,36 +306,33 @@ inline void machine_run(void)
 
     if(machine_clk){
         machine_clk = 0;
-//   #ifdef ADC_ON
-            switch(state_machine){
-                case STATE_INITIALIZING:
-                    task_initializing();
+        switch(state_machine){
+            case STATE_INITIALIZING:
+                task_initializing();
 
-                    break;
-                case STATE_IDLE:
-                    task_idle();
+                break;
+            case STATE_IDLE:
+                task_idle();
 
-                    break;
-                case STATE_RUNNING:
-                    task_running();
-                    #ifdef CAN_ON
-                        can_app_task();
-                    #endif /* CAN_ON */   
-                    
-                    break;
-                case STATE_ERROR:
-                    task_error();
+                break;
+            case STATE_RUNNING:
+                task_running();
+                #ifdef CAN_ON
+                    can_app_task();
+                #endif /* CAN_ON */   
+                
+                break;
+            case STATE_ERROR:
+                task_error();
 
-                case STATE_RESET:
-                default:
-                    task_reset();
-                    break;
-            }
+            case STATE_RESET:
+            default:
+                task_reset();
+                break;
         }
-   // } 
-  // #endif /* ADC_ON */
+    }
     
-}     
+}
 
 /**
 * @brief ISR para ações de controle
@@ -352,10 +351,32 @@ ISR(TIMER2_COMPA_vect)
     }
 }
 
-ISR(INT0_vect)
+// TODO: Hardware: Change connections from PD2 (INT0) to PB0 (PCINT0) 
+// to enable this input capture technique.
+ISR(TIMER1_CAPT_vect)
 {
-    if(!tst_bit(RPM_PIN, RPM_INT)){
-        tachometer.interrupt_count++;
+    static uint16_t t1 = 0;
+    static uint16_t t2 = 0;
+
+    if(tachometer.started == 0){
+        t1 = ICR1;
+        tachometer.started = 1;
+    }else{
+        t2 = ICR1;
+		if(!tachometer.lock){
+        	tachometer.dt_avg_sum += ((uint32_t)(t2 - t1)) 
+            	                    | (((uint32_t)tachometer.overflow_counter) << 16);
+        	tachometer.dt_avg_sum_count++;
+        	tachometer.overflow_counter = 0;
+
+        	t1 = t2;
+		}
     }
 }
 
+ISR(TIMER1_OVF_vect)
+{
+    if (++tachometer.overflow_counter == 0) {
+        tachometer.started = 0;
+    }
+}

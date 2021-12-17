@@ -86,13 +86,10 @@
 #define     clr_led()               
 #endif // LED_ON
 
-#define rpm_interrupt_enable()  set_bit(EIMSK, INT0);      // Habilitação da interrupção do INT0  
-#define rpm_interrupt_disable()  clr_bit(EIMSK, INT0);  // Desativar interrupção 
-#define RPM_PIN		PIND
-#define RPM_PORT	PORTD	 
-#define RPM_DDR		DDRD
-#define RPM_INT		PD2
-#define RPM_TIMER_PERIOD 1.f/MACHINE_TIMER_FREQUENCY
+#define RPM_PIN		PINB
+#define RPM_PORT	PORTB
+#define RPM_DDR		DDRB
+#define RPM_INT		PB0
 
 #ifdef CAN_ON 
 #define CAN_SIGNATURE_SELF              CAN_SIGNATURE_MT19
