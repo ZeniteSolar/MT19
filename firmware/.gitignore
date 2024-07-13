@@ -1,0 +1,4 @@
+# can_ids should always be downloaded
+src/can_ids.h
+bin
+obj

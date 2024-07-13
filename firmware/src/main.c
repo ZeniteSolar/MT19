@@ -84,7 +84,7 @@ void init(void)
     #endif
 
         clr_bit(RPM_DDR, RPM_INT);                  // rpm como entrada
-        set_bit(RPM_PORT, PORTD);                   //pull up ativo 
+    set_bit(RPM_PORT, RPM_INT);                 // pull up ativo
         set_bit(EICRA, ISC01);                      // Habilitação do trigger para falling edge
         clr_bit(EICRA, ISC00);                      // Desativar interrupção 
                         

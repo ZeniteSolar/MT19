@@ -90,6 +90,8 @@ endef
 
 $(foreach i,$(SPECIAL_DEFS),$(eval $(call CHECK_ANSWER,$(i))))
 
+MATH_LIB = -lm
+
 ##
 
 #---------------- Compiler Options C ----------------
@@ -103,28 +105,28 @@ $(foreach i,$(SPECIAL_DEFS),$(eval $(call CHECK_ANSWER,$(i))))
 #CFLAGS += $(CDEFS)
 CFLAGS += -O$(OPT)
 #CFLAGS += -g$(DEBUG)
-#CFLAGS += -funsigned-char
-#CFLAGS += -funsigned-bitfields
-#CFLAGS += -fpack-struct
-#CFLAGS += -fshort-enums
+CFLAGS += -funsigned-char
+CFLAGS += -funsigned-bitfields
+CFLAGS += -fpack-struct
+CFLAGS += -fshort-enums
 CFLAGS += -Wall
 #CFLAGS += -Wstrict-prototypes
 #CFLAGS += -mshort-calls
-#CFLAGS += -ffunction-sections
-#CFLAGS += -fdata-sections
-#CFLAGS += -ffreestanding
-#CFLAGS += -mcall-prologues
+CFLAGS += -ffunction-sections
+CFLAGS += -fdata-sections
+CFLAGS += -ffreestanding
+CFLAGS += -mcall-prologues
 #CFLAGS += --param inline-call-cost=2
 #CFLAGS += -finline-limit=3
 #CFLAGS += -fno-inline-small-functions
 #CFLAGS += -fno-unit-at-a-time
-#CFLAGS += -Wundef
-#CFLAGS += -Wunreachable-code
-#CFLAGS += -Wsign-compare
-#CFLAGS += -Waddr-space-convert
-#CFLAGS += -Wmisspelled-isr
+CFLAGS += -Wundef
+CFLAGS += -Wunreachable-code
+CFLAGS += -Wsign-compare
+CFLAGS += -Waddr-space-convert
+CFLAGS += -Wmisspelled-isr
 #CFLAGS += -Wa,-adhlns=$(<:%.c=$(OBJDIR)/%.lst)
-#CFLAGS += $(patsubst %,-I%,$(EXTRAINCDIRS))
+CFLAGS += $(patsubst %,-I%,$(EXTRAINCDIRS))
 CFLAGS += -mmcu=$(MCU)
 CFLAGS += -std=gnu99
 CFLAGS += -DF_CPU=$(F_CPU)

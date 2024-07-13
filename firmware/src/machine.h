@@ -59,13 +59,10 @@ void tachometer_init(void);
 
 typedef struct tachometer
 {
-    uint8_t started;
-	uint8_t lock;
-    uint16_t overflow_counter;
+    uint32_t overflow_counter;
     uint16_t dt_avg_sum_count;
-    uint64_t dt_avg_sum;
-    uint32_t dt_avg;
-	uint32_t rpm;
+    uint32_t dt_avg_sum;
+    uint16_t rpm;
 }tachometer_t;
 
 // machine checks

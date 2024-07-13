@@ -86,20 +86,19 @@
 #define     clr_led()               
 #endif // LED_ON
 
-#define RPM_PIN		PINB
-#define RPM_PORT	PORTB
-#define RPM_DDR		DDRB
-#define RPM_INT		PB0
+// Note: The original PCB was using this PB0 for the CAN. This version requires a PCB hack.
+#define RPM_PIN PINB
+#define RPM_PORT PORTB
+#define RPM_DDR DDRB
+#define RPM_INT PB0
 
 #ifdef CAN_ON 
 #define CAN_SIGNATURE_SELF              CAN_SIGNATURE_MT19
 //#define CAN_SIGNATURE_SELF              CAN_SIGNATURE_MSC19_1
 #define SPI_ON
-#define CAN_APP_SEND_STATE_FREQ     40//36000     //<! state msg frequency in Hz
-#define CAN_APP_SEND_RPM_FREQ       4//6000      //<! adc msg frequency in Hz
+#define CAN_APP_SEND_STATE_FREQ     64 // 36000     //<! state msg frequency in Hz
+#define CAN_APP_SEND_RPM_FREQ       16   // 6000      //<! adc msg frequency in Hz
 #define CAN_APP_CHECKS_WITHOUT_MSC19_MSG  10
-
-
 // CANBUS DEFINITONS
 // ----------------------------------------------------------------------------
 /* Global settings for building the can-lib and application program.

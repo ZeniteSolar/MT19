@@ -10,24 +10,33 @@ extern error_flags_t error_flags;
 /**
  * @brief Prints a can message via usart
  */
-
 void compute_rpm_avg(void)
 {
-    if(tachometer.dt_avg_sum_count){
-		tachometer.lock = 1;
-        tachometer.dt_avg = tachometer.dt_avg_sum/tachometer.dt_avg_sum_count;
-    }
+    // VERBOSE_MSG_MACHINE(usart_send_string(", avg_sum_count: "));
+    // VERBOSE_MSG_MACHINE(usart_send_uint16(tachometer.dt_avg_sum_count));
+    // VERBOSE_MSG_MACHINE(usart_send_string(", dt_avg_sum: "));
+    // VERBOSE_MSG_MACHINE(usart_send_uint32(tachometer.dt_avg_sum));
+    // VERBOSE_MSG_MACHINE(usart_send_string(", overflow_counter: "));
+    // VERBOSE_MSG_MACHINE(usart_send_uint32(tachometer.overflow_counter));
+
+    static float dt_avg = 0;
+
+    if (tachometer.dt_avg_sum_count)
+    {
+        dt_avg = ((float)tachometer.dt_avg_sum) / ((float)tachometer.dt_avg_sum_count);
     tachometer.dt_avg_sum = 0;
     tachometer.dt_avg_sum_count = 0;
-	tachometer.lock = 0;
-	tachometer.rpm = 60 * 1e6 /  (tachometer.dt_avg * 64);
-	VERBOSE_MSG_MACHINE(usart_send_string("RPM: "));
+        tachometer.rpm = 937349.0536045907f / dt_avg;
+    }
+    else
+    {
+        tachometer.rpm = 0;
+    }
+
+    VERBOSE_MSG_MACHINE(usart_send_string("rpm: "));
 	VERBOSE_MSG_MACHINE(usart_send_uint32(tachometer.rpm));
 	VERBOSE_MSG_MACHINE(usart_send_string("\n"));
-	//avg_dt = avg_dt_sum / avg_dt_sum_counter;
-	//avg_rpm = 60 * 1E6 / (avg_dt * 64)
 }
-
 
 inline void can_app_print_msg(can_t *msg)
 {
